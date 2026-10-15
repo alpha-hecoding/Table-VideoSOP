@@ -314,7 +314,7 @@ or engineering causes. Prioritize one or two main causes per round; fix obvious 
 Do not prescribe a number of revision rounds.
 For programmatic animation, follow the same guide's determinism and continuity checks for the actual
 objects, connections, and direct-seek results involved; state what the checks do not cover.
-Before delivery, use tools/motion-check.ps1 to locate issues, then review the whole section against
+Before delivery, use tools/motion-check.sh to locate issues, then review the whole section against
 the actual output, original task, and reference clip. Fix known problems. Mark perceptual checks that
 cannot be watched as unverified.
 Use the registered project environment. Write only in this section's assigned folders; do not
