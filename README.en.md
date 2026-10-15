@@ -304,7 +304,7 @@ The coordinator has recorded this section's visual approval: [plan version and a
 Check the updated brief and continue the permitted production work.
 For sections of an already approved type, match the reference clip named in the storyboard. Only a
 new type, or an unresolved costly problem, needs a representative test clip first.
-Before handing it to me, run tools/motion-check.ps1, review the overview, still intervals, and key
+Before handing it to me, run tools/motion-check.sh, review the overview, still intervals, and key
 action frames, and fix the problems it reveals.
 Use the registered project environment. Write only in this section's assigned folders; do not
 install separate dependencies or change shared components.
