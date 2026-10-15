@@ -18,8 +18,8 @@ This README includes English instructions and copyable prompts. The linked guide
 
 ## Three key practices
 
-- **Shot storyboard** (after the section plan is approved, before design frames): the coordinator writes one page on how the audience watches each section — how the main object changes, how the camera leads the eye, the peak moment and reading pauses, and the reference clip’s version, exact range, chosen qualities, and how this section will achieve them. You review it once before any frames are made. Design frames are keyframes of that process, which avoids laying out a static board first and animating it into a moving slideshow. [Template](templates/镜头剧本.template.md)
-- **Test clips only for new types** (decided when planning or starting a section): sections of an already approved type use a specific reference; compare the actual clips at 1× for the chosen main action, viewing progression, and section rhythm. If the result misses those goals, revise the plan and recheck the affected part. More or larger movement is not the goal. Only approaches not yet approved — a new camera method, spatial or 3D treatment, a new character–graphic interaction, a new transition, a style change, or a first-time technical route — get a short test clip with voiceover first. Once approved, it becomes a reference and later work of that type only matches it. Before delivery, run the [motion self-check](tools/README.md) to catch long stills and processes that flash by.
+- **Storyboard and key states** (after section-plan approval, before design frames): the coordinator specifies the main object's changes, the camera's viewing path, the peak and reading pauses, and the reference clip's version, range, and relevant relationships. You review it once before frames are made. Design frames cover start/end compositions, transformation mechanisms, or handoffs according to the type of change, rather than a fixed image count or one frame every few seconds. [Key-state coverage](templates/镜头剧本.template.md#关键状态覆盖)
+- **Complete the process before polishing parameters**: a new type or unresolved risk of costly rework needs a voiced process preview during design. For an approved type with the relevant risks resolved, reference the approved process and check its adaptation in the first complete preview, without another test-clip approval. Full production still follows approval of the whole-video visual overview. Judge the actual main action, viewing progression, and section rhythm; complete parameter sets and the [motion self-check](tools/README.md) do not replace watching. [Process previews and polishing](docs/04_验收与返修.md#完整过程预演与精修)
 - **End-of-episode retrospective** (after delivery): record rework in your own words and note whether a rule was missing or existed but was not followed; list the shots you liked as future reference clips and the rules that can be removed. Change only the items you choose. [Template](templates/复盘.template.md) · [Prompt](prompts/09_复盘.md)
 
 ## Follow along: from setup to delivery
@@ -211,6 +211,8 @@ approved reference clip or "new type". Wait for my review before producing desig
 
 Open new conversations from **the same series root**. Copy each section's complete command from `分段开工指令.md` into its own conversation. For sequential work, handle sections in the current task. Deliver clean design frames and separate motion annotations according to the task brief and the storyboard you reviewed, and record them in the assigned handoff notes. The coordinator maintains shared control files.
 
+Design frames must explain the key states of approved changes: show how a transformation works and how a handoff preserves relationships. Adjacent processes may share a state; a process frame does not require a pause or cut. Follow [key-state coverage](templates/镜头剧本.template.md#关键状态覆盖) and [complete-process references](experience/镜头推进与转场.md#完整过程参考). For programmatic animation, previews of new risks belong to the existing test-clip stage. Secondary decoration may be simplified, but the main object, framing, text size, and reading time must be realistic. These previews do not replace finished-looking design frames or visual-overview approval.
+
 #### Image and video generation
 
 Give each reference image **a clear role**, establish character identity and visual style, and specify the scene, action, camera, and sound. You **generate and select the footage manually**. The agent reviews the returned files and aligns action and sound cues to the actual result.
@@ -248,7 +250,7 @@ If regeneration is needed, give me complete revised prompts. Review the files fi
 candidates as accepted without my decision.
 ```
 
-**Check:** Design frames show the actual appearance. Motion annotations explain how attention shifts, when states change, and how movement settles. Motion-graphics and screen-recording routes also deliver designs and check evidence through their briefs; generated video is not required for every section.
+**Check:** Design frames show the actual appearance and explain the key changes. Motion annotations explain how attention shifts, when states change, and how movement settles. Motion-graphics and screen-recording routes also deliver designs and check evidence through their briefs; generated video is not required for every section.
 
 [Generation examples](examples/02_生图生视频提示词示例.md) · [Screen-recording notes](experience/录屏剪辑.md)
 
@@ -266,7 +268,7 @@ Use the **voiceover, scene, and emotion** to decide what the audience should not
 
 **Build continuous changes in the main object and its relationships around complete ideas.** Plan action, viewing position, and attention handoffs together. Each sentence does not need a separate action; reading, comparison, and emotional pauses may stay still. A moving cursor or line end alone does not mean the main scene is progressing. Pure motion-graphics explanations sit directly on the canvas; window frames only hold interfaces, screenshots, recordings, and generated video. Camera moves apply to the whole picture, so a frame pushes, pulls, and pans together with its content.
 
-**If motion looks too fast or abrupt, check durations before adjusting easing curves**: give each change (including transitions between shots) enough time for its size, because a curve cannot make up for missing time; see [Give motion and pictures enough time](experience/视觉叙事与连续MG.md#给运动和画面留足时间).
+**Budget time for the main change, reading, and handoffs before entrances and decoration.** If motion feels too fast or abrupt, check the process and timing against recognition difficulty and the intended meaning before tuning curves. Remove repeated entrances and waiting before compressing the core change; do not reorder the approved voiceover. Reading time starts when text is complete, clear, unobstructed, and large enough to read. Compared objects need a shared window in which their differences are discernible, while unrelated movement yields attention. See [Give motion and pictures enough time](experience/视觉叙事与连续MG.md#给运动和画面留足时间).
 
 | Close view: focus on the current question | Pullback: reveal the full relationship |
 | :---: | :---: |
@@ -287,10 +289,10 @@ Episode: [path]; section designs, motion annotations, and asset candidates: [exa
 paths and versions].
 Use AGENTS.md and the current production plan to compile a whole-video visual overview. Do not
 accept undecided candidates on my behalf.
-Check that visuals add information beyond the voiceover, camera choices fit the narration, scene,
-and emotion, and reading windows and transitions work.
-List concrete decisions for my review. Separate motion that has not been shown or tested; static
-frames do not validate movement.
+Check that visuals add information beyond the voiceover, key states explain the approved changes,
+camera choices fit the narration, scene, and emotion, and reading windows and transitions work.
+Check the new-risk previews or applicable approved references. List concrete decisions for my review.
+Separate motion that has not been shown or tested; static frames do not validate movement.
 ```
 
 **② Approve the visuals and permit production**
@@ -302,16 +304,29 @@ After choosing, tell the coordinator: “Approve visual overview `[version and s
 ```text
 The coordinator has recorded this section's visual approval: [plan version and approved scope].
 Check the updated brief and continue the permitted production work.
-For sections of an already approved type, match the reference clip named in the storyboard. Only a
-new type, or an unresolved costly problem, needs a representative test clip first.
-Before handing it to me, run tools/motion-check.ps1, review the overview, still intervals, and key
-action frames, and fix the problems it reveals.
+Follow the process-preview and polishing section in docs/04_验收与返修.md: reuse valid previews. For
+an approved type with relevant risks resolved, check adaptation in the first complete voiced preview
+without another test-clip approval.
+Complete the viewing process across the section's full accepted voiceover range before polishing
+parameters. Reuse an equivalent valid preview; do not transcode solely to create a low-resolution copy.
+For revisions, record the actual interval and symptom, then distinguish concept, timing, parameter,
+or engineering causes. Prioritize one or two main causes per round; fix obvious defects promptly.
+Do not prescribe a number of revision rounds.
+For programmatic animation, follow the same guide's determinism and continuity checks for the actual
+objects, connections, and direct-seek results involved; state what the checks do not cover.
+Before delivery, use tools/motion-check.ps1 to locate issues, then review the whole section against
+the actual output, original task, and reference clip. Fix known problems. Mark perceptual checks that
+cannot be watched as unverified.
 Use the registered project environment. Write only in this section's assigned folders; do not
 install separate dependencies or change shared components.
 Align action and sound markers to the actual accepted footage. Recalibrate after speed, trim, or
 duration changes.
 Deliver editable source, parameters, a preview, and handoff notes identifying asset versions,
 start/end states, timing, sound strategy, checks, and unresolved issues.
+If the main action, framing, or handoff changes materially, update design evidence within the
+authorized folders. List affected storyboard sections, frames/annotations, accepted-version pointers,
+and QA items in the handoff notes for the coordinator to update centrally. Curve or material changes
+that preserve the process do not require redrawing the entire design.
 ```
 
 **Check:** Section deliverables can be located and edited. Candidates and accepted versions are distinct. The coordinator schedules heavy rendering.
@@ -446,7 +461,7 @@ Fill in bracketed fields in templates and prompts. The coordinator supplies actu
 
 The main task routes have been checked and revised using Windows and Codex tasks that did not inherit the original conversation. The shot-storyboard, reference-matching, and motion self-check flow was tested once in my own series on a roughly 18-second section, using a new task that did not inherit the original conversation: it wrote the storyboard, chose a reference clip, ran the self-check before delivery, and flagged the missing whole-video overview; motion and meaning improved clearly. The test revealed camera moves happening only inside a window frame; the window-frame rule was added afterward and has not been retested. Fresh-machine setup, a complete audiovisual production, and independent reproduction of visual quality remain unverified.
 
-The 2026-10-15 update carries production-retrospective findings into the main-action, viewing-progression, handoff, and specific-reference guidance, templates, acceptance rules, and both README versions. Documentation, links, and logic were checked; the revised rules have not been tested in a new complete production. The earlier trial does not validate this update.
+The 2026-10-15 update extends the main-action, viewing-progression, handoff, and reference guidance with key-state coverage, complete process previews, reading and time budgets, targeted revisions, determinism checks, and synchronized design versions in both README entries. Documentation, links, and logic were checked; improved video quality and cross-model effects have not been tested with these new rules. The earlier trial does not validate this update. Keep an actual comparison from the next applicable representative section. Cross-model comparisons are optional and use the same inputs and iteration budget; they neither guarantee model performance nor authorize extra spending. [Rule effects and model comparisons](docs/04_验收与返修.md#规则效果与模型对照)
 
 Licensing:
 
