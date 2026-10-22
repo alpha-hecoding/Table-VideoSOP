@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D04 Agent-Reflex 反思闭环 · 内容帧</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）；内容帧结构沿用候选A/动态测试01 */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --success: #FCE8D4;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 论文身份卡（D02 同型：论文名＋机构＋票数芯片） */
+.ident { margin-top: 18px; font-size: 30px; color: var(--ink-soft); line-height: 1.25; }
+.ident b { color: var(--ink); font-weight: 700; }
+.chip { display: inline-block; font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink); background: #fff; margin-left: 26px; vertical-align: middle; line-height: 1.25; }
+/* 闭环图 */
+.loop { margin-top: 12px; height: 620px; }
+svg { display: block; }
+/* 数据卡组 */
+.data { margin-top: 16px; display: flex; gap: 24px; align-items: center; height: 149px; }
+.card { flex: 1; background: #fff; border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; }
+.card .k { font-size: 23px; color: var(--ink-soft); line-height: 1.25; }
+.card .v { font-family: var(--font-mono); font-size: 46px; font-weight: 700; color: var(--ink); margin-top: 2px; line-height: 1.1; }
+.card .v em { font-style: normal; color: var(--accent); }
+.card .n { font-size: 23px; color: var(--ink-soft); margin-top: 2px; line-height: 1.25; }
+.chipbig { font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink); background: #fff; line-height: 1.25; white-space: nowrap; }
+/* 页脚 */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* #dot 圆点推进中间态：隐藏尚未出现的元素 */
+.dot-only { display: none; }
+body.dot .dot-only { display: block; }
+body.dot .only-final { display: none; }
+/* 标注层 */
+.anno { display: none; }
+body.annot .anno { display: block; }
+.anno.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+.anno.legend { position: absolute; left: 1582px; top: 300px; width: 250px; background: #fff; border: 2px solid #C2185B; border-radius: 10px; padding: 12px 14px; font-family: var(--font-mono); font-size: 16px; line-height: 1.55; color: #C2185B; white-space: normal; }
+g.anno { display: none; }
+body.annot g.anno { display: block; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <!-- 论文身份卡：定稿 2.1 节（论文名/机构/193 票） -->
+  <div class="ident">Agent-Reflex：<b>Teaching Language Agents to Act Reflectively</b> · 中国人民大学
+    <span class="chip">HuggingFace 193 票</span>
+  </div>
+
+  <!-- 闭环流程图：6 节点环形，顺序/回环/反思模块位置严格照原稿（R2） -->
+  <div class="loop">
+    <svg width="1744" height="620" viewBox="0 0 1744 620">
+      <!-- 正向链路（实线 tertiary 7px＋实心三角箭头 30×34） -->
+      <g stroke="#F26B1D" stroke-width="7" fill="none">
+        <line x1="447" y1="140" x2="1277" y2="140"/>
+        <line x1="1392" y1="172" x2="1392" y2="273"/>
+        <line x1="1392" y1="357" x2="1392" y2="458"/>
+        <line x1="1297" y1="510" x2="467" y2="510"/>
+        <line class="only-final" x1="352" y1="478" x2="352" y2="377"/>
+      </g>
+      <g fill="#F26B1D">
+        <polygon points="1277,140 1247,123 1247,157"/>
+        <polygon points="1392,273 1375,243 1409,243"/>
+        <polygon points="1392,458 1375,428 1409,428"/>
+        <polygon points="467,510 497,493 497,527"/>
+        <polygon class="only-final" points="352,377 335,407 369,407"/>
+      </g>
+      <!-- 节点：白盒 3px line 边 rounded.small -->
+      <g class="node">
+        <rect x="257" y="108" width="190" height="64" rx="10" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="352" y="150" font-size="30" text-anchor="middle" fill="#3E4A5A">感知</text>
+      </g>
+      <g class="node">
+        <rect x="1297" y="108" width="190" height="64" rx="10" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="1392" y="150" font-size="30" text-anchor="middle" fill="#3E4A5A">规划</text>
+      </g>
+      <g class="node">
+        <rect x="1297" y="293" width="190" height="64" rx="10" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="1392" y="335" font-size="30" text-anchor="middle" fill="#3E4A5A">行动</text>
+      </g>
+      <g class="node">
+        <rect x="1297" y="478" width="190" height="64" rx="10" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="1392" y="520" font-size="30" text-anchor="middle" fill="#3E4A5A">观察结果</text>
+      </g>
+      <!-- 反思模块：强调态（tertiary 边 4px ＋ success 底） -->
+      <g class="node">
+        <rect x="257" y="478" width="190" height="64" rx="10" fill="#FCE8D4" stroke="#F26B1D" stroke-width="4"/>
+        <text x="352" y="520" font-size="30" font-weight="700" text-anchor="middle" fill="#F26B1D">反思模块</text>
+      </g>
+      <g class="node only-final">
+        <rect x="257" y="293" width="190" height="64" rx="10" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="352" y="335" font-size="30" text-anchor="middle" fill="#3E4A5A">策略更新</text>
+      </g>
+      <!-- 回环线：策略更新→规划（沿线生长，process 曲线；终态完整） -->
+      <g class="only-final">
+        <path id="loopArc" d="M 352,293 C 700,420 1150,370 1316.5,186.8" fill="none" stroke="#F26B1D" stroke-width="7"/>
+        <polygon points="1316.5,186.8 1308.9,220.4 1283.7,197.6" fill="#F26B1D"/>
+      </g>
+      <!-- 环心：Reflex 机制 4 词（原稿：行动→观察→反思→调整策略） -->
+      <g id="center" text-anchor="middle">
+        <text x="872" y="430" font-family="JetBrains Mono NF" font-size="30" font-weight="700" letter-spacing="4" fill="#F26B1D">REFLEX</text>
+        <text x="872" y="480" font-size="30" fill="#3E4A5A">行动 → 观察 → 反思 → 调整策略</text>
+      </g>
+      <!-- 圆点（#dot 中间态：推进至反思模块，接触瞬间） -->
+      <circle class="dot-only" cx="447" cy="510" r="10" fill="#F26B1D"/>
+      <!-- 节点序号标注（仅标注版） -->
+      <g class="anno" font-family="JetBrains Mono NF" font-size="20" font-weight="700" fill="#C2185B">
+        <text x="455" y="100">①</text>
+        <text x="1241" y="100">②</text>
+        <text x="1235" y="332">③</text>
+        <text x="1245" y="548">④</text>
+        <text x="455" y="487">⑤</text>
+        <text x="245" y="332" text-anchor="end">⑥</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- 数据卡组：15-20%（强调 tertiary）＋ WebShop/ALFWorld 芯片 ＋ 193 票 -->
+  <div class="data only-final">
+    <div class="card"><div class="k">基准提升</div><div class="v"><em>15-20%</em></div><div class="n">错误恢复显著增强</div></div>
+    <div class="chipbig">WebShop · ALFWorld</div>
+    <div class="card"><div class="k">HuggingFace 热度</div><div class="v">193 票</div><div class="n">Agent-Reflex</div></div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>二、Agent 架构与范式 · Agent-Reflex</span>
+  </div>
+
+  <!-- 标注层（#annot） -->
+  <div class="anno legend">运动标注（候选·计划）<br>①-⑥ 顺序入场 16f 错峰 8f<br>顺序/回环/位置照原稿 (R2)<br>圆点：行动→观察→反思<br>travel · 路径先绘先完成<br>回环线：策略更新→规划<br>process 生长 30f → 闭合脉冲 1.05<br>环心 4 词＝原稿 Reflex 机制句<br>数据卡：15-20% 计数 60f · tertiary<br>WebShop/ALFWorld 芯片 · 193 票卡<br>固定机位 · 尾停稳 84f → 接棒 D05<br>秒点待配音 (R5)</div>
+  <div class="anno txt" style="left:1490px; top:143px;">身份卡＝定稿 2.1 节（论文名/机构/193 票）</div>
+  <div class="anno txt" style="left:1450px; top:806px;">数据卡组（计数候选 284–344f）</div>
+</div>
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#dot') document.body.classList.add('dot');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const out = {
+    ident: { box: r(document.querySelector('.ident')), chipW: Math.round(document.querySelector('.ident .chip').getBoundingClientRect().width) },
+    nodes: [...document.querySelectorAll('g.node text')].map(t => ({ t: t.textContent, w: Math.round(t.getComputedTextLength()), boxW: 190 })),
+    loopArc: (() => { const b = document.querySelector('#loopArc').getBBox(); return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)}; })(),
+    center: [...document.querySelectorAll('#center text')].map(t => ({ w: Math.round(t.getComputedTextLength()) })),
+    data: {
+      row: r(document.querySelector('.data')),
+      chipW: Math.round(document.querySelector('.chipbig').getBoundingClientRect().width),
+      cards: [...document.querySelectorAll('.card')].map(c => ({
+        k: c.querySelector('.k').textContent,
+        v: c.querySelector('.v').textContent,
+        overflow: [...c.children].some(d => d.scrollWidth > d.clientWidth + 1),
+        box: r(c)
+      }))
+    },
+    foot: r(document.querySelector('.foot'))
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

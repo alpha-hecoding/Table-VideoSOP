@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D09 收尾 · 内容帧一（必读 3 卡＋动手实践芯片，终态）</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）；内容帧结构沿用候选A/动态测试01（D04–D08 同构）
+   版式：必读 3 卡横排（剧本 D09"必读 3 卡横排"）＋动手实践芯片行；卡组＋芯片行成组在主体区垂直居中（同 D01 做法）
+   每卡＝序号＋论文名＋一句定位/重点＋时长芯片（任务书"必读 3 张卡（论文＋建议时长）"） */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --success: #FCE8D4;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 轻量章节行：复用 D05 已确认版式（2026-10-16 用户确认，D06–D08 共用），本段实例＝"六、今日学习建议"（无标签） */
+.chap { margin-top: 18px; }
+.chap .line { font-size: 30px; line-height: 1.25; }
+.chap .line .no, .chap .line .name { font-weight: 700; color: var(--ink); }
+.chap .underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+/* 主体区：卡组＋实践芯片行成组垂直居中；卡高 240（四行内容＋padding 18/28 后仍有余量） */
+.main { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+/* minmax(0,1fr)：三卡强制等宽（各 565.33），不被 nowrap 长行撑破 */
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.kcard { height: 280px; background: #fff; border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; display: flex; flex-direction: column; justify-content: center; }
+.kcard .no { font-family: var(--font-mono); font-size: 26px; font-weight: 700; color: var(--ink-soft); line-height: 1.25; white-space: nowrap; }
+.kcard .name { margin-top: 10px; font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.kcard .point { margin-top: 10px; font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.kcard .focus { margin-top: 10px; font-size: 26px; font-weight: 400; color: var(--ink-soft); line-height: 1.25; white-space: nowrap; }
+.kcard .point .m, .kcard .focus .m, .chip .m { font-family: var(--font-mono); }
+/* 时长芯片：DESIGN chip 组件默认态（surface 底＋2px line 边＋r10＋padding 6/18＋body 字阶）；卡内无 tertiary（焦点纪律） */
+.chip { align-self: flex-start; margin-top: 14px; font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); background: #fff; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+/* 动手实践芯片行：标签（26px secondary）＋3 芯片；芯片同 DESIGN chip 默认态 */
+.practice { display: flex; align-items: center; gap: 14px; }
+.practice .lab { font-size: 26px; font-weight: 700; color: var(--ink-soft); white-space: nowrap; }
+/* #alt＝候选·未确认：把定稿"关注方向"4 项也上屏（剧本 D09 未给对应画面对应行 → 交用户拍板） */
+.watch { display: none; align-items: center; gap: 14px; }
+body.alt .watch { display: flex; }
+.watch .lab { font-size: 26px; font-weight: 700; color: var(--ink-soft); white-space: nowrap; }
+/* 页脚（与 D04–D08 内容帧一致） */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* 标注层（仅 #annot） */
+.anno { display: none; }
+body.annot .anno { display: block; }
+.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+/* 单帧说明：只在 #alt 出现，不进 #annot 标注版（避免候选被误当成终态） */
+.note { display: none; }
+body.alt .note.altnote { display: block; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <!-- 轻量章节行：与第 1 卡同拍进入（剧本统一约定"其余章节边界用轻量章节行，随段内首帧进入"）；章名取定稿全称 -->
+  <div class="chap">
+    <div class="line"><span class="no">六、</span><span class="name">今日学习建议</span></div>
+    <div class="underline"></div>
+  </div>
+
+  <div class="main">
+    <!-- 必读 3 卡：内容取定稿 §六"必读论文（按优先级）"1–3 -->
+    <div class="grid">
+      <div class="kcard">
+        <div class="no">必读 1</div>
+        <div class="name">Jeva: System One Models</div>
+        <div class="point">理解新范式</div>
+        <div class="focus">重点：<span class="m">System One</span> 思维、架构设计</div>
+        <div class="chip"><span class="m">1-2</span> 小时</div>
+      </div>
+      <div class="kcard">
+        <div class="no">必读 2</div>
+        <div class="name">Agent-Reflex</div>
+        <div class="point"><span class="m">Agent</span> 反思机制</div>
+        <div class="focus">重点：<span class="m">Reflex</span> 模块设计</div>
+        <div class="chip"><span class="m">1</span> 小时</div>
+      </div>
+      <div class="kcard">
+        <div class="no">必读 3</div>
+        <div class="name">Tev</div>
+        <div class="point">长程 <span class="m">Agent</span> 训练</div>
+        <div class="focus">重点：密集进度奖励设计</div>
+        <div class="chip"><span class="m">1</span> 小时</div>
+      </div>
+    </div>
+
+    <!-- 动手实践 3 芯片（剧本 D09 行 2"3 个实践芯片成组出现"）；内容取定稿 §六"动手实践"1–3 -->
+    <div class="practice">
+      <div class="lab">动手实践</div>
+      <div class="chip">试用 <span class="m">LFM2.5-24B-A2B</span></div>
+      <div class="chip">部署 <span class="m">MiniCPM-V-4.7</span></div>
+      <div class="chip">实现 <span class="m">Agent-Reflex</span> 反思模块</div>
+    </div>
+
+    <!-- 候选·未确认：定稿"关注方向"4 项（剧本 D09 未给对应画面对应行） -->
+    <div class="watch">
+      <div class="lab">关注方向</div>
+      <div class="chip"><span class="m">System One</span> 模型</div>
+      <div class="chip"><span class="m">Agent</span> 自进化</div>
+      <div class="chip">端侧大模型</div>
+      <div class="chip">密集奖励设计</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>六、今日学习建议</span>
+  </div>
+
+  <!-- 标注层：坐标按实测行盒（measure_必读卡组帧.json：章节行 133–171／下划线 185–195／卡组 401–681，卡各 565／实践行 713–777／页脚 997–1036） -->
+  <div class="anno txt" style="left:560px; top:143px;">① 章节行复用 D05 已确认版式（D06–D08 共用）：仅换章号/名称；章名取定稿全称"六、今日学习建议"</div>
+  <div class="anno txt" style="left:560px; top:165px;">② 卡组＋实践芯片行成组在主体区垂直居中（同 D01）；卡内无 tertiary、无强调态</div>
+  <div class="anno txt" style="left:100px; top:373px;">③ 定稿 §六 必读 1 · 入场 6–22f（时长芯片随卡错峰 6f）</div>
+  <div class="anno txt" style="left:690px; top:373px;">④ 定稿 §六 必读 2 · 入场按词点（候选 +40f）</div>
+  <div class="anno txt" style="left:1280px; top:373px;">⑤ 定稿 §六 必读 3 · 入场按词点（候选 +80f）</div>
+  <div class="anno txt" style="left:100px; top:690px;">⑥ 卡：3px line 边·r16·padding 18/28（候选A 已确认值）｜no 26 mono／name 30 mono·700／point 26／focus 26 次级／chip 26·padding 6/18·r10·边 2</div>
+  <div class="anno txt" style="left:100px; top:790px;">⑦ 动手实践 3 芯片成组入场（错峰 6f）· 内容＝定稿 §六 实践 1–3；实测内容宽 1116＋间距＝1172＜安全宽 1744</div>
+  <div class="anno txt" style="left:100px; top:940px;">⑧ 页脚 221–237f · 停稳 84f（2.8s）· F0 待配音（R5）；实测三卡等宽 565、各行 textW≤414＜内宽 503，无溢出</div>
+
+  <!-- 单帧说明（仅 #alt 可见） -->
+  <div class="txt note altnote" style="left:560px; top:143px;">候选·未确认：定稿"关注方向"4 项也上屏（剧本 D09 无对应行）→ 三行同屏密度上升，交用户拍板</div>
+</div>
+<script>
+if (location.hash === '#annot') document.body.classList.add('annot');
+if (location.hash === '#alt') document.body.classList.add('alt');
+if (location.hash === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const tw = (el) => ({t: el.textContent, w: Math.round(el.getBoundingClientRect().width),
+    overflow: el.scrollWidth > el.clientWidth + 1});
+  // 真实文字宽（克隆隐藏 span 量取，块级元素自身宽＝盒宽，不能用来判断是否会溢出）
+  // 真实文字宽：克隆到 body 并复制被测元素的计算字体（font:inherit 会误用父级字体，量出来偏小）
+  const realW = (el) => {
+    const cs = getComputedStyle(el);
+    const s = document.createElement('span');
+    s.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;top:0;white-space:nowrap;';
+    s.style.fontFamily = cs.fontFamily;
+    s.style.fontSize = cs.fontSize;
+    s.style.fontWeight = cs.fontWeight;
+    s.style.fontStyle = cs.fontStyle;
+    s.style.letterSpacing = cs.letterSpacing;
+    s.innerHTML = el.innerHTML;
+    document.body.appendChild(s);
+    const w = Math.round(s.getBoundingClientRect().width);
+    s.remove();
+    return w;
+  };
+  const line = (el) => ({t: el.textContent, textW: realW(el), boxW: Math.round(el.clientWidth),
+    overflow: el.scrollWidth > el.clientWidth + 1});
+  const cards = [...document.querySelectorAll('.grid .kcard')].map((c) => ({
+    no: line(c.querySelector('.no')), name: line(c.querySelector('.name')),
+    point: line(c.querySelector('.point')), focus: line(c.querySelector('.focus')),
+    chip: tw(c.querySelector('.chip')), box: r(c), innerW: c.clientWidth - 56
+  }));
+  const out = {
+    docScroll: {w: document.documentElement.scrollWidth, h: document.documentElement.scrollHeight},
+    top: r(document.querySelector('.top')),
+    chap: {line: r(document.querySelector('.chap .line')), underline: r(document.querySelector('.chap .underline'))},
+    main: r(document.querySelector('.main')),
+    grid: r(document.querySelector('.grid')),
+    cards,
+    practice: {row: r(document.querySelector('.practice')), lab: tw(document.querySelector('.practice .lab')),
+      chips: [...document.querySelectorAll('.practice .chip')].map(tw),
+      rowContentW: [...document.querySelectorAll('.practice .lab, .practice .chip')].reduce((a, e) => a + e.getBoundingClientRect().width, 0)},
+    foot: r(document.querySelector('.foot')),
+    footTexts: [...document.querySelectorAll('.foot span')].map((e) => ({t: e.textContent, textW: realW(e)})),
+    safeArea: {top: 60, left: 88, right: 1832, bottom: 1036}
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.style.display = 'none';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

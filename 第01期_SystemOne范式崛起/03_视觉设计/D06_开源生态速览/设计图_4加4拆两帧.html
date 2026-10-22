@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D06 开源生态速览 · 候选B：4+4 拆两帧（第一帧 §3.1–3.4／第二帧 §3.5–3.8＋已读芯片行）</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）；内容帧结构沿用候选A/动态测试01（D04/D05/D07/D08 同构）
+   版式：候选B＝4+4 拆两帧（重点审查 R3 的两版候选之一；另一版＝8 格一次上屏，见 设计图_8格网格帧.html）
+   每帧 2×2 卡组＝D05 已确认版式（格 860×372，行/列间距 24）；格内字阶与候选A 完全一致（名称 26／下载量 46／亮点 26）
+   → 两版候选只差"一屏 8 格"还是"两屏各 4 格"，不比字号，用户只比密度与可读性
+   第二帧顶部＝已读芯片行（前 4 项降级为芯片，名称单行）：让 8 项在末帧同屏看全，且星标芯片保持强调态 → 保住任务书"结束：星标格留焦点" */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --success: #FCE8D4;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+/* 两帧互斥显示：每帧都是完整 1920×1080 内容帧，截图各自成图 */
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: none; flex-direction: column; position: relative; }
+body.f2 .frame.f1, body.f2plain .frame.f1 { display: none; }
+body.f2 .frame.f2, body.f2plain .frame.f2 { display: flex; }
+body.f1 .frame.f1, body .frame.f1 { display: flex; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 轻量章节行：复用 D05 已确认版式（2026-10-16 用户确认，D06–D08 共用），本段实例＝"三、开源生态"（无标签）
+   两帧都保留章节行：章节上下文跨帧不断（拆帧只换卡组，不换章） */
+.chap { margin-top: 18px; }
+.chap .line { font-size: 30px; line-height: 1.25; }
+.chap .line .no, .chap .line .name { font-weight: 700; color: var(--ink); }
+.chap .underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+/* 已读芯片行（仅第二帧）：DESIGN chip 组件默认态（surface 底＋2px line 边＋r10＋padding 6/18＋body 字阶）
+   星标芯片＝强调态（tertiary 边＋success 底），与第一帧星标格的强调态同一语言 → 焦点跨帧不丢 */
+.recap { margin-top: 20px; display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+.recap .cap { font-size: 24px; color: var(--ink-soft); line-height: 1.25; }
+.recap .chip { font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); background: #fff; color: var(--ink); line-height: 1.25; font-family: var(--font-mono); }
+.recap .chip.hot { border-color: var(--accent); background: var(--success); }
+.recap .chip .st { color: var(--accent); }
+/* 2×2 卡组：格 860×372（第一帧，同 D05）；第二帧因多出芯片行 → 行高约 340，格盒宽度不变
+   卡片参数＝候选A 已确认值不改（白 surface、3px line 边、r16、padding 18/28） */
+.grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; margin-top: 20px; }
+.kcard { position: relative; background: #fff; border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; display: flex; flex-direction: column; justify-content: center; }
+.kcard .name { font-family: var(--font-mono); font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.kcard .data { margin-top: 12px; display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+.kcard .data .dl { font-size: 24px; font-weight: 400; color: var(--ink-soft); line-height: 1.25; }
+.kcard .data .num { font-family: var(--font-mono); font-size: 46px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+.kcard .point { margin-top: 12px; font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.kcard.hot { border-color: var(--accent); background: var(--success); }
+.kcard .star { position: absolute; right: 20px; top: 14px; font-size: 26px; line-height: 1.25; color: var(--accent); }
+/* #f2plain＝候选·未确认：第二帧不带已读芯片行（只换 4 格）
+   代价：末帧只剩 §3.5–3.8，8 项不同屏、星标项目不在末帧 → 与任务书"结束：星标格留焦点"相冲；交用户拍板 */
+body.f2plain .recap { visibility: hidden; }
+/* 页脚（与 D04/D05/D07/D08 内容帧一致；两帧都在，跨帧常驻） */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* 标注层（仅 #annot＝第一帧标注／#annot2＝第二帧标注） */
+.anno { display: none; }
+body.annot .frame.f1 .anno { display: block; }
+body.annot2 .frame.f2 .anno { display: block; }
+.anno.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+.note { display: none; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+body.f2plain .frame.f2 .note.pnote { display: block; }
+</style>
+</head>
+<body class="f1">
+<!-- ===== 第一帧：§3.1–3.4（章节行＋4 格 2×2；格 1 星标强调态） ===== -->
+<div class="frame f1">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+  <div class="chap">
+    <div class="line"><span class="no">三、</span><span class="name">开源生态</span></div>
+    <div class="underline"></div>
+  </div>
+  <div class="grid">
+    <div class="kcard hot">
+      <div class="star">★</div>
+      <div class="name">MiniCPM-V-4.7-35B-A3B</div>
+      <div class="data"><span class="dl">下载</span><span class="num">4,160+</span></div>
+      <div class="point">MoE 多模态，端侧友好</div>
+    </div>
+    <div class="kcard">
+      <div class="name">MiniCPM-V-4.7-1B</div>
+      <div class="data"><span class="dl">下载</span><span class="num">2,540+</span></div>
+      <div class="point">超轻量，手机可跑</div>
+    </div>
+    <div class="kcard">
+      <div class="name">Unlimited-OCR</div>
+      <div class="data"><span class="dl">下载</span><span class="num">1.15M+</span></div>
+      <div class="point">百度出品，无限长文档</div>
+    </div>
+    <div class="kcard">
+      <div class="name">LTX-2.5</div>
+      <div class="data"><span class="dl">下载</span><span class="num">1.82M+</span></div>
+      <div class="point">图像生成视频，动画流畅</div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>三、开源生态</span>
+  </div>
+
+  <div class="anno txt" style="left:100px; top:228px;">① 定稿 §3.1 · 章节行＋本格同拍入场 6–22f</div>
+  <div class="anno txt" style="left:100px; top:250px;">入场即强调态＋★ 角标（星标项目）</div>
+  <div class="anno txt" style="left:984px; top:228px;">② 定稿 §3.2 · 入场 51–67f</div>
+  <div class="anno txt" style="left:100px; top:624px;">③ 定稿 §3.3 · 入场 81–97f</div>
+  <div class="anno txt" style="left:984px; top:624px;">④ 定稿 §3.4 · 入场 111–127f</div>
+  <div class="anno txt" style="left:560px; top:143px;">⑨ 卡组版式＝D05 已确认 2×2（格 860×372）· 格内字阶与候选A 一致（26/46/26）</div>
+  <div class="anno txt" style="left:560px; top:165px;">⑩ 帧间过渡：格 4 落定 127f → 短停稳 14f → 141f 硬切到第二帧（干净切换，无新运动）</div>
+  <div class="anno txt" style="left:560px; top:187px;">⑪ 页脚 121–137f 入场后跨帧常驻 · 切点＝§3.5 句点（候选）· F0 待配音 (R5)</div>
+</div>
+
+<!-- ===== 第二帧：§3.5–3.8（已读芯片行＋4 格 2×2；星标芯片保持强调态） ===== -->
+<div class="frame f2">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+  <div class="chap">
+    <div class="line"><span class="no">三、</span><span class="name">开源生态</span></div>
+    <div class="underline"></div>
+  </div>
+  <div class="recap">
+    <span class="cap">已列 4 项</span>
+    <span class="chip hot">MiniCPM-V-4.7-35B-A3B <span class="st">★</span></span>
+    <span class="chip">MiniCPM-V-4.7-1B</span>
+    <span class="chip">Unlimited-OCR</span>
+    <span class="chip">LTX-2.5</span>
+  </div>
+  <div class="grid">
+    <div class="kcard">
+      <div class="name">drama-3</div>
+      <div class="data"><span class="dl">下载</span><span class="num">839</span></div>
+      <div class="point">36B 超大规模 TTS</div>
+    </div>
+    <div class="kcard">
+      <div class="name">iris-3b</div>
+      <div class="data"><span class="dl">下载</span><span class="num">1,130+</span></div>
+      <div class="point">轻量图像生成，端侧可跑</div>
+    </div>
+    <div class="kcard">
+      <div class="name">clef</div>
+      <div class="data"><span class="dl">下载</span><span class="num">18,300+</span></div>
+      <div class="point">Cloudflare 边缘部署优化</div>
+    </div>
+    <div class="kcard">
+      <div class="name">embeddinggemma-2</div>
+      <div class="data"><span class="dl">下载</span><span class="num">135,000+</span></div>
+      <div class="point">0.7B Embedding</div>
+    </div>
+  </div>
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>三、开源生态</span>
+  </div>
+
+  <div class="anno txt" style="left:100px; top:296px;">⑤ 定稿 §3.5 · 入场 147–163f（切点后错峰 6f）</div>
+  <div class="anno txt" style="left:984px; top:296px;">⑥ 定稿 §3.6 · 入场 177–193f</div>
+  <div class="anno txt" style="left:100px; top:658px;">⑦ 定稿 §3.7 · 入场 207–223f</div>
+  <div class="anno txt" style="left:984px; top:658px;">⑧ 定稿 §3.8 · 入场 237–253f</div>
+  <div class="anno txt" style="left:560px; top:143px;">⑨ 已读芯片行 141–165f 淡入（错峰 6f）：前 4 项降级为芯片（只名称）→ 8 项末帧同屏</div>
+  <div class="anno txt" style="left:560px; top:165px;">⑩ 星标芯片保持强调态（tertiary 边＋success 底）→ 焦点跨帧不丢（任务书"星标格留焦点"）</div>
+  <div class="anno txt" style="left:560px; top:187px;">⑪ 页脚跨帧常驻 · 停稳 84f（273–357f）· F0 待配音 (R5)</div>
+
+  <div class="note pnote" style="left:560px; top:143px;">候选·未确认：第二帧不带已读芯片行 → 末帧只剩 §3.5–3.8，8 项不同屏、星标项目不在末帧</div>
+  <div class="note pnote" style="left:560px; top:165px;">与任务书"结束：网格全落停稳、星标格留焦点"相冲 → 默认采用带芯片行的第二帧</div>
+  <div class="note pnote" style="left:560px; top:187px;">本页芯片行按 visibility 隐藏（位置留空）→ 格盒与带芯片行版本逐像素同位，只作取舍对照</div>
+</div>
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.className = 'f1 annot';
+if (mode === '#f2') document.body.className = 'f2';
+if (mode === '#annot2') document.body.className = 'f2 annot2';
+if (mode === '#f2plain') document.body.className = 'f2plain f2';
+if (mode === '#measure1') document.body.className = 'f1';
+if (mode === '#measure2') document.body.className = 'f2';
+if (mode.indexOf('measure') >= 0) {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const ov = (el) => el.scrollWidth > el.clientWidth + 1;
+  const textW = (el) => {
+    const c = el.cloneNode(true);
+    c.style.cssText += ';position:absolute;left:-9999px;top:0;width:auto;display:inline-block;white-space:nowrap;margin:0;';
+    el.parentElement.appendChild(c);
+    const w = Math.round(c.getBoundingClientRect().width);
+    c.remove();
+    return w;
+  };
+  const frame = document.querySelector('.frame.' + (mode === '#measure2' ? 'f2' : 'f1'));
+  const out = {
+    frame: mode === '#measure2' ? 'f2' : 'f1',
+    top: r(frame.querySelector('.top')),
+    chap: {
+      line: r(frame.querySelector('.chap .line')),
+      underline: r(frame.querySelector('.chap .underline'))
+    },
+    recap: frame.querySelector('.recap') ? {
+      box: r(frame.querySelector('.recap')),
+      chips: [...frame.querySelectorAll('.recap .chip')].map(c => ({
+        text: c.textContent.replace(/\s+/g, ' ').trim(),
+        hot: c.classList.contains('hot'),
+        w: Math.round(c.getBoundingClientRect().width),
+        overflow: ov(c)
+      })),
+      capW: textW(frame.querySelector('.recap .cap'))
+    } : null,
+    grid: r(frame.querySelector('.grid')),
+    gridCols: getComputedStyle(frame.querySelector('.grid')).gridTemplateColumns,
+    gridRows: getComputedStyle(frame.querySelector('.grid')).gridTemplateRows,
+    cards: [...frame.querySelectorAll('.kcard')].map(c => ({
+      name: c.querySelector('.name').textContent,
+      num: c.querySelector('.num').textContent,
+      point: c.querySelector('.point').textContent,
+      star: !!c.querySelector('.star'),
+      hot: c.classList.contains('hot'),
+      innerW: c.querySelector('.name').clientWidth,
+      nameW: textW(c.querySelector('.name')),
+      dataW: textW(c.querySelector('.data')),
+      pointW: textW(c.querySelector('.point')),
+      nameOverflow: ov(c.querySelector('.name')),
+      dataOverflow: ov(c.querySelector('.data')),
+      pointOverflow: ov(c.querySelector('.point')),
+      box: r(c)
+    })),
+    foot: r(frame.querySelector('.foot')),
+    // 安全区自检：上 60 / 左右 88 / 下 44（DESIGN canvas.safeInsets）→ 内容底边须 ≤1036
+    safe: {
+      contentBottomLimit: 1036,
+      footBottom: Math.round(frame.querySelector('.foot').getBoundingClientRect().bottom),
+      gridBottom: Math.round(frame.querySelector('.grid').getBoundingClientRect().bottom),
+      gridLeft: Math.round(frame.querySelector('.grid').getBoundingClientRect().left),
+      gridRight: Math.round(frame.querySelector('.grid').getBoundingClientRect().right),
+      frameScrollOverflow: frame.scrollHeight > 1080
+    }
+  };
+  const pre = document.createElement('pre');
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

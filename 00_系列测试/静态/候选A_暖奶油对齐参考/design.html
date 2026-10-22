@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>候选A 暖奶油对齐参考</title>
+<style>
+/* ===== 参数（可编辑） ===== */
+:root {
+  --bg: #F9F2E0;          /* 暖奶油底 */
+  --ink: #3E4A5A;         /* 蓝灰墨字 */
+  --ink-soft: #7C8797;    /* 次要注释 */
+  --accent: #F26B1D;      /* 橙色强调 */
+  --panel: #FFFFFF;       /* 白卡片 */
+  --panel-blue: #DEE5EC;  /* 浅蓝灰面板 */
+  --panel-orange: #FCE8D4;/* 浅橙面板 */
+  --line: #AEBAC7;        /* 描边 */
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrainsMono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+/* Noto Sans CJK 行盒偏高，收紧关键行高 */
+h1 { line-height: 1.1; }
+.panel .pt { line-height: 1.15; }
+.card .v { line-height: 1.1; }
+.foot { line-height: 1.3; }
+.frame {
+  width: 1920px; height: 1080px; background: var(--bg);
+  padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative;
+}
+/* 顶栏 */
+.top { display: flex; justify-content: space-between; align-items: baseline; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); }
+/* 标题区 */
+.kicker { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; }
+h1 { font-size: 88px; font-weight: 700; color: var(--ink); letter-spacing: 3px; margin-top: 10px; line-height: 1.1; }
+.underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+.sub { margin-top: 16px; font-size: 30px; color: var(--ink-soft); }
+.sub b { color: var(--ink); }
+.chips { display: flex; gap: 14px; margin-left: 26px; }
+.chip { font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink); background: var(--panel); }
+.chip.hot { border-color: var(--accent); background: var(--panel-orange); color: var(--accent); font-weight: 700; }
+/* 中部对比 */
+.panels { display: flex; gap: 40px; margin-top: 32px; flex: 1; }
+.panel { flex: 1; border-radius: 16px; padding: 26px 34px; }
+.panel.left { background: var(--panel); border: 3px solid var(--line); }
+.panel.right { background: var(--panel-blue); }
+.panel .pt { display: flex; align-items: baseline; gap: 16px; }
+.panel .pt .q { font-family: var(--font-mono); color: var(--accent); font-size: 46px; font-weight: 700; }
+.panel .pt h2 { font-size: 42px; font-weight: 700; color: var(--ink); }
+.panel .pt .en { font-family: var(--font-mono); font-size: 28px; color: var(--ink-soft); }
+.panel .cap { font-size: 24px; color: var(--ink-soft); margin-top: 4px; }
+.tag { display: inline-block; margin-top: 12px; background: var(--accent); color: #fff; font-size: 22px; font-weight: 700; padding: 5px 18px; border-radius: 10px; letter-spacing: 2px; }
+svg { display: block; margin-top: 16px; width: 100%; }
+/* 底部数据 */
+.data { display: flex; gap: 32px; margin-top: 22px; }
+.card { flex: 1; background: var(--panel); border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; }
+.card .k { font-size: 23px; color: var(--ink-soft); }
+.card .v { font-family: var(--font-mono); font-size: 46px; font-weight: 700; color: var(--ink); margin-top: 2px; }
+.card .v em { font-style: normal; color: var(--accent); }
+.card .n { font-size: 23px; color: var(--ink-soft); margin-top: 2px; }
+/* 页脚 */
+.foot { margin-top: 18px; border-top: 2px solid var(--line); padding-top: 12px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <div class="kicker"><div class="sq"></div><span>Agent 架构与范式</span></div>
+  <h1>System One 范式崛起</h1>
+  <div class="underline"></div>
+  <div class="sub">Jeva：<b>System One Models from First Principles</b> · 新加坡国立大学
+    <span class="chips"><span class="chip">HuggingFace 266 票</span><span class="chip hot">今日 Top 1</span></span>
+  </div>
+
+  <div class="panels">
+    <div class="panel left">
+      <div class="pt"><h2>快速直觉</h2><span class="en">System 1</span><span class="q">?</span></div>
+      <div class="cap">一眼看穿的即时推理</div>
+      <svg width="100%" height="120" viewBox="0 0 880 150" preserveAspectRatio="xMinYMid meet">
+        <rect x="20" y="45" width="180" height="60" rx="12" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="110" y="84" font-size="30" text-anchor="middle" fill="#3E4A5A" font-family="Noto Sans CJK SC">感知</text>
+        <line x1="210" y1="75" x2="600" y2="75" stroke="#F26B1D" stroke-width="7"/>
+        <polygon points="600,75 570,58 570,92" fill="#F26B1D"/>
+        <rect x="620" y="45" width="200" height="60" rx="12" fill="#FCE8D4" stroke="#F26B1D" stroke-width="4"/>
+        <text x="720" y="84" font-size="30" text-anchor="middle" fill="#F26B1D" font-weight="bold" font-family="Noto Sans CJK SC">答案</text>
+      </svg>
+      <span class="tag">JEVA</span>
+    </div>
+    <div class="panel right">
+      <div class="pt"><h2>慢速反思</h2><span class="en">System 2</span><span class="q">?</span></div>
+      <div class="cap">传统 CoT 慢思考路径</div>
+      <svg width="100%" height="120" viewBox="0 0 880 150" preserveAspectRatio="xMinYMid meet">
+        <rect x="20" y="45" width="150" height="60" rx="12" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="95" y="84" font-size="28" text-anchor="middle" fill="#3E4A5A" font-family="Noto Sans CJK SC">感知</text>
+        <path d="M180 75 H300 V30 H420 V110 H540 V75 H660" fill="none" stroke="#3E4A5A" stroke-width="6" stroke-dasharray="16 12"/>
+        <polygon points="690,75 660,58 660,92" fill="#3E4A5A"/>
+        <rect x="700" y="45" width="160" height="60" rx="12" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="780" y="84" font-size="28" text-anchor="middle" fill="#3E4A5A" font-family="Noto Sans CJK SC">答案</text>
+      </svg>
+      <div class="cap" style="margin-top:10px">多步推导 · 更慢但更稳</div>
+    </div>
+  </div>
+
+  <div class="data">
+    <div class="card"><div class="k">NeurIPS 2026 收录论文</div><div class="v"><em>9,000+</em> 篇</div><div class="n">历史新高</div></div>
+    <div class="card"><div class="k">arXiv cs.AI 新论文（10/14）</div><div class="v">852 篇</div><div class="n">持续活跃</div></div>
+    <div class="card"><div class="k">HuggingFace 热门论文</div><div class="v">Jeva <em>266</em> 票</div><div class="n">今日第一名</div></div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>来源：arXiv · HuggingFace</span>
+  </div>
+</div>
+</body>
+</html>

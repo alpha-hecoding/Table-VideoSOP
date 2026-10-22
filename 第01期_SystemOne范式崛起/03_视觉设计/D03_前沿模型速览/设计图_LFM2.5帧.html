@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D03 前沿模型速览 · 设计图（LFM2.5 帧·初始态）</title>
+<style>
+/* 参数来源：DESIGN.md front matter（revision 1.0.0）＋候选A 标题块版式（沿用 D01/D02 实测值）＋DESIGN 组件（card/chip/panel/data-value）；构图与组件为候选决定，见接入说明 */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --panel: #FFFFFF;
+  --panel-blue: #DEE5EC;
+  --panel-orange: #FCE8D4;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; position: relative; }
+/* 系列顶栏（与 D01/D02 一致，承接保留） */
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* kicker＝轻量章节行"一、前沿模型动态"（沿用 D02 版式提案，本段内 4 帧之间保留不重绘；章号写法按 U1 统一到原稿 h2 口径） */
+.kicker { display: flex; align-items: center; gap: 14px; margin-top: 28px; height: 30px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; line-height: 1; }
+h1 { font-size: 88px; font-weight: 700; color: var(--ink); letter-spacing: 3px; margin-top: 10px; line-height: 1.1; height: 97px; }
+.underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+.sub { margin-top: 16px; display: flex; align-items: center; gap: 14px; min-height: 49px; }
+.sub .who { font-size: 30px; color: var(--ink-soft); line-height: 1.25; margin-right: 12px; }
+/* 芯片（DESIGN chip，常态：surface 底＋2px line 边；本段速览帧无强调态，唯一强调态在 LFM2.5 对比表行） */
+.chip { display: inline-flex; align-items: center; font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink); background: var(--panel); line-height: 1.25; white-space: nowrap; }
+.chip .num { font-family: var(--font-mono); font-weight: 700; }
+/* 卡的一行文字（定位语，body 字阶） */
+.desc { margin-top: 22px; font-size: 26px; color: var(--ink); line-height: 1.25; }
+/* 要点芯片行（4 帧同版式固定位） */
+.chips { margin-top: 34px; display: flex; gap: 16px; }
+.note { margin-top: 24px; font-size: 24px; color: var(--ink-soft); line-height: 1.25; }
+/* 页脚（承接 D01/D02，不重绘） */
+.foot { position: absolute; left: 88px; right: 88px; bottom: 44px; border-top: 2px solid var(--line); padding-top: 12px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.3; }
+#measure { display: none; }
+.anno { display: none; }
+body.annot .anno { display: block; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #1B5E9E; white-space: nowrap; }
+body.annot .anno.dim { color: #C2185B; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <div class="kicker"><div class="sq"></div><span>一、前沿模型动态</span></div>
+  <h1>LFM2.5-24B-A2B</h1>
+  <div class="underline"></div>
+  <div class="sub">
+    <span class="who">Liquid AI</span>
+    <span class="chip"><span class="num">24B</span> 总参 · <span class="num">2B</span> 激活 · MoE</span>
+  </div>
+  <div class="desc">端侧大模型新标杆 · 手机/笔记本流畅运行</div>
+  <div class="chips">
+    <span class="chip">液态神经网络</span>
+    <span class="chip">图像/文本多模态输入</span>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>来源：arXiv · HuggingFace</span>
+  </div>
+
+  <!-- 标注层 -->
+  <div class="anno" style="left:88px; top:12px;">安全区：上60 / 左右88 / 下44（1920×1080）</div>
+  <div class="anno" style="left:88px; top:60px; border-top:1px dashed #1B5E9E; width:1744px;"></div>
+  <div class="anno dim" style="left:360px; top:66px;">顶栏 44px/700·字距2 ＋ EP 28px mono（橙）｜日期 26px mono——系列顶栏，承接 D01/D02 保留，帧间转场不重绘</div>
+  <div class="anno dim" style="left:88px; top:118px;">kicker＝轻量章节行"一、前沿模型动态"：章号＋章名，30px·字距4＋18px 橙方块（沿用 D02 版式提案，写法按 U1＝原稿 h2 口径）；D02 进入本段时保留，本段 4 帧之间保留</div>
+  <div class="anno dim" style="left:700px; top:150px;">h1＝模型名 88px/700·字距3 mt10（必要上屏：LFM2.5-24B-A2B）＝速览卡的"名称"</div>
+  <div class="anno dim" style="left:230px; top:294px;">下划线 120×10 mt14（候选A 已确认值）</div>
+  <div class="anno dim" style="left:88px; top:374px;">副题：来源 30px 次级＋数据芯片（常态：2px line 边·26px·数字 mono/700）——卡的"1 数据"（24B/2B 必要上屏）</div>
+  <div class="anno dim" style="left:640px; top:394px;">速览帧统一无强调态：tertiary 焦点只留给 LFM2.5 对比表行（见 设计图_LFM2.5对比表）</div>
+  <div class="anno dim" style="left:88px; top:432px;">一行文字（定位语）26px：卡的"1 行文字"（端侧大模型新标杆 · 手机/笔记本流畅运行）</div>
+  <div class="anno dim" style="left:88px; top:510px;">要点芯片行（4 帧同版式固定位）：芯片 26px·padding 6/18·r10·边2 常态——本帧 2 枚＝稿件技术亮点①③（MoE/2B 在副题、端侧在定位语，不重复）</div>
+  <div class="anno" style="left:88px; top:540px;">↓ 对比表预留区：第 2 句配音"对比分析"时入场（见 设计图_LFM2.5对比表），芯片行保留不撤换</div>
+  <div class="anno dim" style="left:88px; top:958px;">页脚：2px 线·pt12·23px 次级——承接 D01/D02 保留，不重绘</div>
+</div>
+
+<script>
+// #annot：显示标注层；#measure：输出关键尺寸 JSON（版式一致性/溢出/安全区核对）
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const out = {
+    h1: r(document.querySelector('h1')),
+    sub: r(document.querySelector('.sub')),
+    desc: r(document.querySelector('.desc')),
+    chips: [...document.querySelectorAll('.chips .chip')].map(c => ({t: c.textContent, w: Math.round(c.getBoundingClientRect().width), overflow: c.scrollWidth > c.clientWidth + 1})),
+    chipsRow: r(document.querySelector('.chips')),
+    foot: r(document.querySelector('.foot'))
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>候选C 白底数据简报</title>
+<style>
+/* ===== 参数（可编辑） ===== */
+:root {
+  --bg: #FFFFFF;          /* 纯白 */
+  --ink: #1F242B;         /* 石墨 */
+  --ink-soft: #6F7885;
+  --accent: #00A870;      /* 翠绿 */
+  --panel: #F3F5F7;       /* 浅灰面板 */
+  --line: #DCE1E7;
+  --font-zh: 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrainsMono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 70px 90px 52px; display: flex; flex-direction: column; }
+/* 顶栏 */
+.top { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 18px; }
+.brand .sq { min-width: 64px; height: 52px; padding: 0 10px; background: var(--accent); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 22px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+.brand .t { font-size: 38px; font-weight: 700; color: var(--ink); letter-spacing: 3px; }
+.brand .t small { font-family: var(--font-mono); font-size: 24px; color: var(--ink-soft); font-weight: 400; letter-spacing: 2px; margin-left: 10px; }
+.date { font-family: var(--font-mono); font-size: 28px; color: var(--ink-soft); }
+/* 标题 */
+h1 { font-size: 96px; font-weight: 700; color: var(--ink); letter-spacing: 2px; margin-top: 40px; padding-left: 28px; border-left: 16px solid var(--accent); }
+.sub { margin-top: 16px; padding-left: 44px; font-size: 30px; color: var(--ink-soft); }
+.sub b { color: var(--ink); }
+/* 主体网格 */
+.grid { flex: 1; display: flex; gap: 36px; margin-top: 40px; }
+.box { border: 2px solid var(--line); border-radius: 14px; background: var(--panel); padding: 30px 36px; display: flex; flex-direction: column; }
+.box.left { flex: 55; }
+.box.right { flex: 45; }
+.box h3 { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; font-weight: 700; padding-bottom: 14px; border-bottom: 2px solid var(--line); }
+.lane { margin-top: 30px; }
+.lane .lt { display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 700; color: var(--ink); }
+.lane .lt .dot { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); }
+.lane.dim .lt .dot { background: var(--line); }
+.lane .lt .en { font-family: var(--font-mono); font-size: 24px; color: var(--ink-soft); font-weight: 400; }
+/* 数据表 */
+.row { display: flex; align-items: baseline; justify-content: space-between; padding: 20px 0; border-bottom: 2px solid var(--line); }
+.row .k { font-size: 28px; color: var(--ink); }
+.row .v { font-family: var(--font-mono); font-size: 40px; font-weight: 700; color: var(--ink); }
+.row .v em { font-style: normal; color: var(--accent); }
+.row .n { font-size: 23px; color: var(--accent); font-weight: 700; width: 130px; text-align: right; }
+.row .n.dim { color: var(--ink-soft); }
+/* 迷你柱状图 */
+.chart { margin-top: auto; }
+.chart .ct { font-size: 24px; color: var(--ink-soft); margin-bottom: 12px; }
+.bars { display: flex; align-items: flex-end; gap: 40px; height: 150px; }
+.bar { display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end; }
+.bar .b { width: 74px; background: var(--accent); }
+.bar.mid .b { background: #9AD9C0; }
+.bar .bv { font-family: var(--font-mono); font-size: 26px; font-weight: 700; color: var(--ink); }
+.bar .bl { font-size: 22px; color: var(--ink-soft); }
+/* 页脚 */
+.foot { margin-top: 32px; border-top: 2px solid var(--ink); padding-top: 16px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 22px; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand"><div class="sq">EP01</div><div class="t">AI 情报<small>DAILY BRIEF</small></div></div>
+    <div class="date">2026-10-15</div>
+  </div>
+
+  <h1>System One 范式崛起</h1>
+  <div class="sub"><b>Jeva: System One Models from First Principles</b> · 新加坡国立大学 · HuggingFace 今日 Top 1</div>
+
+  <div class="grid">
+    <div class="box left">
+      <h3>范式对比 PARADIGM</h3>
+      <div class="lane">
+        <div class="lt"><span class="dot"></span>快速直觉<span class="en">System 1 · Jeva</span></div>
+        <svg width="860" height="120" viewBox="0 0 860 120" style="margin-top:14px">
+          <rect x="10" y="35" width="170" height="54" rx="10" fill="#fff" stroke="#DCE1E7" stroke-width="3"/>
+          <text x="95" y="70" font-size="27" text-anchor="middle" fill="#1F242B" font-family="WenQuanYi Zen Hei">感知</text>
+          <line x1="190" y1="62" x2="620" y2="62" stroke="#00A870" stroke-width="7"/>
+          <polygon points="660,62 622,44 622,80" fill="#00A870"/>
+          <rect x="675" y="35" width="175" height="54" rx="10" fill="#00A870"/>
+          <text x="762" y="70" font-size="27" text-anchor="middle" fill="#fff" font-weight="bold" font-family="WenQuanYi Zen Hei">答案</text>
+        </svg>
+      </div>
+      <div class="lane dim">
+        <div class="lt"><span class="dot"></span>慢速反思<span class="en">System 2 · 传统 CoT</span></div>
+        <svg width="860" height="120" viewBox="0 0 860 120" style="margin-top:14px">
+          <rect x="10" y="35" width="140" height="54" rx="10" fill="#fff" stroke="#DCE1E7" stroke-width="3"/>
+          <text x="80" y="70" font-size="26" text-anchor="middle" fill="#1F242B" font-family="WenQuanYi Zen Hei">感知</text>
+          <path d="M160 62 H300 V20 H440 V100 H580 V62 H620" fill="none" stroke="#6F7885" stroke-width="6" stroke-dasharray="14 11"/>
+          <polygon points="660,62 622,44 622,80" fill="#6F7885"/>
+          <rect x="675" y="35" width="175" height="54" rx="10" fill="#fff" stroke="#DCE1E7" stroke-width="3"/>
+          <text x="762" y="70" font-size="26" text-anchor="middle" fill="#1F242B" font-family="WenQuanYi Zen Hei">答案</text>
+        </svg>
+      </div>
+    </div>
+    <div class="box right">
+      <h3>今日数据速览 DATA</h3>
+      <div class="row"><span class="k">NeurIPS 2026 收录</span><span class="v"><em>9,000+</em> 篇</span><span class="n">历史新高</span></div>
+      <div class="row"><span class="k">arXiv cs.AI 新增</span><span class="v">852 篇</span><span class="n">↑ 活跃</span></div>
+      <div class="row"><span class="k">HuggingFace Top 1</span><span class="v">Jeva <em>266</em> 票</span><span class="n">↑ 今日</span></div>
+      <div class="chart">
+        <div class="ct">arXiv 新增论文（10/14）</div>
+        <div class="bars">
+          <div class="bar"><span class="bv">852</span><div class="b" style="height:118px"></div><span class="bl">cs.AI</span></div>
+          <div class="bar mid"><span class="bv">385</span><div class="b" style="height:54px"></div><span class="bl">cs.CL</span></div>
+          <div class="bar"><span class="bv">862</span><div class="b" style="height:120px"></div><span class="bl">cs.LG</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 DAILY BRIEF — 2026.10.15</span>
+    <span>SOURCE: arXiv / HuggingFace (2026-10-14)</span>
+  </div>
+</div>
+</body>
+</html>

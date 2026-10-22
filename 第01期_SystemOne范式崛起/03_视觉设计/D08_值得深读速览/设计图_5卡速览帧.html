@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D08 值得深读速览 · 内容帧（5 卡上2下3 终态，卡 4 强调态）</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）；内容帧结构沿用候选A/动态测试01（D04/D05/D07 同构）
+   版式：5 卡上 2 下 3（剧本 D08"上 2 下 3 或 5 行"取前者，与 D05 的 2×2、D07 的单列 5 行区分）
+   每卡＝论文名＋出处行（机构/票数/页数）＋一句启发；卡 4（Hybrid Reasoning）切强调态＋"System 1 + System 2"芯片 */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --success: #FCE8D4;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 轻量章节行：复用 D05 已确认版式（2026-10-16 用户确认，D06–D08 共用），本段实例＝"五、值得深读的研究"（无标签） */
+.chap { margin-top: 18px; }
+.chap .line { font-size: 30px; line-height: 1.25; }
+.chap .line .no, .chap .line .name { font-weight: 700; color: var(--ink); }
+.chap .underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+/* 5 卡布局：六列栅格（列宽 270.67＝(1744−5×24)/6），两行等高（1fr 1fr），行/列间距 24（同 D05 卡组）
+   默认＝上 2 下 3（剧本 D08 首选）：卡 1–2 跨 3 列（860），卡 3–5 跨 2 列（565）
+   #alt＝候选·上 3 下 2：卡 1–3 跨 2 列（565），卡 4–5 跨 3 列（860）→ 强调卡卡盒更宽；交用户拍板
+   卡片参数＝候选A 已确认值（白 surface、3px line 边、r16、padding 18/28 不改） */
+.grid { flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 1fr 1fr; gap: 24px; margin-top: 20px; }
+.k1, .k2 { grid-column: span 3; }
+.k3, .k4, .k5 { grid-column: span 2; }
+body.alt .k1, body.alt .k2, body.alt .k3 { grid-column: span 2; }
+body.alt .k4, body.alt .k5 { grid-column: span 3; }
+.kcard { background: #fff; border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; display: flex; flex-direction: column; justify-content: center; }
+.kcard .name { font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.kcard .meta { margin-top: 10px; font-family: var(--font-mono); font-size: 26px; font-weight: 400; color: var(--ink-soft); line-height: 1.25; white-space: nowrap; }
+.kcard .point { margin-top: 14px; font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.m { font-family: var(--font-mono); }
+/* 芯片（卡 4）：DESIGN chip 组件默认态＝surface 底＋2px line 边＋r10＋padding 6/18＋body 字阶
+   与 D02 论文身份帧的"System One 范式"概念标签同组件、同状态（呼应主题回扣，不再叠一层强调态） */
+.chip { align-self: flex-start; margin-top: 14px; font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); background: #fff; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+/* 强调态（卡 4）：tertiary 边＋success 底（剧本 D08"切强调态（tertiary 边＋success 底）"；同测试01 换态语言） */
+.kcard.hot { border-color: var(--accent); background: var(--success); }
+/* #chipalt＝候选·未确认：芯片改 result-label 语言（tertiary 底＋canvas 字＋字距 2）
+   大段表写"强调态芯片"，但 success 底芯片落在 success 底卡上不可辨 → 候选只能换成结果标签语言；
+   默认采用终态（默认态芯片，与 D02"System One 范式"概念标签同组件同状态） */
+body.chipalt .chip { border-color: var(--accent); background: var(--accent); color: var(--bg); font-weight: 700; letter-spacing: 2px; }
+/* 页脚（与 D04/D05/D07 内容帧一致） */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* #pre＝强调态切换前中间态（卡 4 已入场但仍默认态、芯片未出现）；卡盒尺寸与终态一致，换态不跳版 */
+body.pre .kcard.hot { border-color: var(--line); background: #fff; }
+body.pre .chip { visibility: hidden; }
+/* 标注层（仅 #annot） */
+.anno { display: none; }
+body.annot .anno { display: block; }
+.anno.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+/* 单帧说明：只在 #pre 出现，不进 #annot 标注版（避免中间态被误当成终态） */
+.note { display: none; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+body.pre .note.prenote, body.chipalt .note.altnote, body.alt .note.layoutnote { display: block; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <!-- 轻量章节行：与第 1 卡同拍进入（剧本 D08 行 1）；版式复用 D05 已确认样例，仅换章号/名称 -->
+  <div class="chap">
+    <div class="line"><span class="no">五、</span><span class="name">值得深读的研究</span></div>
+    <div class="underline"></div>
+  </div>
+
+  <!-- 5 卡上 2 下 3：内容取定稿 5.1–5.5；每卡＝论文名＋出处行＋一句启发 -->
+  <div class="grid">
+    <div class="kcard k1">
+        <div class="name">Tev</div>
+        <div class="meta">UCLA · <span class="m">Nanyun Peng</span> 组</div>
+        <div class="point">训练关键在奖励设计：稀疏 → 密集</div>
+      </div>
+    <div class="kcard k2">
+        <div class="name">TPPO</div>
+        <div class="meta"><span class="m">71</span> 票 · 数学/代码 <span class="m">+10-15%</span></div>
+        <div class="point"><span class="m">RLHF / RLAIF</span> 的改进方向</div>
+      </div>
+    <div class="kcard k3">
+        <div class="name">Vela</div>
+        <div class="meta">AllSpark Research · <span class="m">69</span> 票</div>
+        <div class="point">人在回路新范式：从用户行为学习</div>
+      </div>
+    <div class="kcard k4 hot">
+        <div class="name">Hybrid Reasoning Agents</div>
+        <div class="meta"><span class="m">45</span> 页 · <span class="m">12</span> 图</div>
+        <div class="point">未来 <span class="m">Agent</span> 的标准架构</div>
+        <div class="chip">System 1 + System 2</div>
+      </div>
+    <div class="kcard k5">
+        <div class="name">DoubtLess</div>
+        <div class="meta">对比解码 · 加速 <span class="m">2-3</span> 倍</div>
+        <div class="point">无需重训，现有模型可直接优化</div>
+      </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>五、值得深读的研究</span>
+  </div>
+
+  <!-- 标注层：①–⑤＝定稿出处＋入场帧（候选）；④b＝换态与芯片节拍；⑥⑦⑧＝版式与焦点纪律、页脚/停稳/F0
+       坐标按实测行盒（见 05_制作工程/分段/D08_值得深读速览/_work/measure.json） -->
+  <div class="anno txt" style="left:100px; top:228px;">① 定稿 §5.1 · 章节行＋本卡同拍入场 6–22f</div>
+  <div class="anno txt" style="left:984px; top:228px;">② 定稿 §5.2 · 入场 51–67f</div>
+  <div class="anno txt" style="left:100px; top:624px;">③ 定稿 §5.3 · 入场 96–112f</div>
+  <div class="anno txt" style="left:690px; top:622px;">④ 定稿 §5.4 · 入场 141–157f（默认态）· 芯片 163–179f</div>
+  <div class="anno txt" style="left:690px; top:644px;">④b 163f 离散换态（tertiary 边＋success 底）</div>
+  <div class="anno txt" style="left:1280px; top:624px;">⑤ 定稿 §5.5 · 入场 201–217f</div>
+  <div class="anno txt" style="left:560px; top:143px;">⑥ 章节行复用 D05 已确认版式（D06–D08 共用）：仅换章号/名称，本段无标签</div>
+  <div class="anno txt" style="left:560px; top:165px;">⑦ 强调态只给卡 4（当前焦点＝主题回扣）；其余 4 卡等重、卡内无 tertiary</div>
+  <div class="anno txt" style="left:1150px; top:915px;">⑧ 页脚 221–237f · 停稳 84f（237–321f）· F0 待配音 (R5)</div>
+
+  <!-- 单帧说明（仅 #alt 可见） -->
+  <div class="note layoutnote" style="left:560px; top:143px;">候选·未确认：上 3 下 2 布局（剧本 D08 首选＝上 2 下 3）——强调卡卡盒 860 更宽，卡 1–3 收窄到 565；默认采用上 2 下 3</div>
+
+  <!-- 单帧说明（仅 #chipalt 可见） -->
+  <div class="txt note altnote" style="left:690px; top:622px;">候选·未确认：芯片切 result-label 语言（tertiary 底＋canvas 字）</div>
+  <div class="txt note altnote" style="left:690px; top:644px;">同屏出现两个 tertiary 对象 → 交用户拍板；默认采用终态（默认态芯片）</div>
+
+  <!-- 单帧说明（仅 #pre 可见） -->
+  <div class="txt note prenote" style="left:690px; top:622px;">强调态切换前（局部 141–157f）：卡 4 已落位但仍默认态</div>
+  <div class="txt note prenote" style="left:690px; top:644px;">芯片未出现；卡盒尺寸与终态一致 → 换态不跳版</div>
+</div>
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#pre') document.body.classList.add('pre');
+if (mode === '#chipalt') document.body.classList.add('chipalt');
+if (mode === '#alt') document.body.classList.add('alt');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const ov = (el) => el.scrollWidth > el.clientWidth + 1;
+  // 实测文字宽（nowrap 块的 scrollWidth 等于可用宽，看不出真实文字宽）
+  // → 克隆该行为隐藏的行内块（保留内部 .m 等宽子跨度，字体混排才准），量其边界宽
+  const textW = (el) => {
+    const c = el.cloneNode(true);
+    c.style.cssText += ';position:absolute;left:-9999px;top:0;width:auto;display:inline-block;white-space:nowrap;margin:0;';
+    el.parentElement.appendChild(c); // 留在同一父级内，选择器与字体继承保持一致
+    const w = Math.round(c.getBoundingClientRect().width);
+    c.remove();
+    return w;
+  };
+  const out = {
+    top: r(document.querySelector('.top')),
+    chap: {
+      line: r(document.querySelector('.chap .line')),
+      lineW: Math.round(document.querySelector('.chap .line').getBoundingClientRect().width),
+      underline: r(document.querySelector('.chap .underline'))
+    },
+    grid: r(document.querySelector('.grid')),
+    gridCols: getComputedStyle(document.querySelector('.grid')).gridTemplateColumns,
+    gridRows: getComputedStyle(document.querySelector('.grid')).gridTemplateRows,
+    cards: [...document.querySelectorAll('.kcard')].map(c => ({
+      name: c.querySelector('.name').textContent,
+      meta: c.querySelector('.meta').textContent.replace(/\s+/g, ' ').trim(),
+      point: c.querySelector('.point').textContent.replace(/\s+/g, ' ').trim(),
+      chip: c.querySelector('.chip') ? c.querySelector('.chip').textContent.replace(/\s+/g, ' ').trim() : null,
+      hot: c.classList.contains('hot'),
+      nameOverflow: ov(c.querySelector('.name')),
+      metaOverflow: ov(c.querySelector('.meta')),
+      pointOverflow: ov(c.querySelector('.point')),
+      chipOverflow: c.querySelector('.chip') ? ov(c.querySelector('.chip')) : null,
+      innerW: c.querySelector('.name').clientWidth,
+      nameW: textW(c.querySelector('.name')),
+      metaW: textW(c.querySelector('.meta')),
+      pointW: textW(c.querySelector('.point')),
+      chipW: c.querySelector('.chip') ? Math.round(c.querySelector('.chip').getBoundingClientRect().width) : null,
+      chipTextW: c.querySelector('.chip') ? textW(c.querySelector('.chip')) : null,
+      box: r(c)
+    })),
+    foot: r(document.querySelector('.foot')),
+    // 安全区自检：上 60 / 左右 88 / 下 44（DESIGN canvas.safeInsets）→ 内容底边须 ≤1036
+    safe: {
+      contentBottomLimit: 1036,
+      footBottom: Math.round(document.querySelector('.foot').getBoundingClientRect().bottom),
+      gridBottom: Math.round(document.querySelector('.grid').getBoundingClientRect().bottom),
+      frameScrollOverflow: document.querySelector('.frame').scrollHeight > 1080
+    }
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

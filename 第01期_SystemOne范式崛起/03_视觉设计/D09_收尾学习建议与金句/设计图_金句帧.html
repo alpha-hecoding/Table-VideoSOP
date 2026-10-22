@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D09 收尾 · 内容帧二（金句帧终态：金句＋出处＋解读）</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）
+   版式：金句＝h1 字阶（88px/700，英文取 metadata 字体 JetBrains Mono NF，任务书"必须保持"项）；出处＝metadata 26；解读＝subtitle 30
+   间距只取 DESIGN spacing 阶梯（lg 32 / md 22 / sm 14）——不复用标题块内部比例（DESIGN：标题块局部比例不外推到其他段落）
+   位置：金句块水平居中、垂直偏上（剧本"居中偏上"）；文字左对齐（DESIGN"标题与说明左对齐"）→ 两者兼容读法，居中对齐候选见 #center */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 主体区：金句块居中偏上（下方留白大于上方→视觉偏上；留白量属本段布局变量） */
+.stage { flex: 1; display: flex; justify-content: center; align-items: flex-start; padding-top: 132px; }
+.qblock { width: max-content; }
+/* kicker：DESIGN 已确认组件（18px 橙方块 gap14＋30px 次级·字距4） */
+.kicker { display: flex; align-items: center; gap: 14px; height: 30px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; line-height: 1; }
+/* 金句：h1 字阶 88px/700·行高 1.1·字距 3；英文取 metadata 字体；两行为编辑性断行（不折行，实测均在安全宽内） */
+.quote { margin-top: 22px; font-family: var(--font-mono); font-size: 88px; font-weight: 700; color: var(--ink); letter-spacing: 3px; line-height: 1.1; white-space: nowrap; }
+.src { margin-top: 14px; font-family: var(--font-mono); font-size: 26px; font-weight: 400; color: var(--ink-soft); line-height: 1.25; white-space: nowrap; }
+.interp { margin-top: 32px; font-size: 30px; font-weight: 400; color: var(--ink); line-height: 1.35; white-space: nowrap; }
+.interp .m { font-family: var(--font-mono); }
+/* 页脚（与 D04–D08 内容帧一致） */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* #pre＝解读入场前中间态（局部 294–320f）：金句与出处已落稳，解读行未出现
+   词点纪律：解读随配音"解读"句进入，不提前上屏（DESIGN text：标签随对象成组进入，结论不提前） */
+body.pre .interp { visibility: hidden; }
+/* #center＝候选·未确认：金句块文字居中（剧本"居中偏上"的字面读法）；默认采用文字左对齐＋块水平居中（DESIGN 左对齐规则） */
+body.center .qblock { text-align: center; }
+body.center .kicker { justify-content: center; }
+/* 标注层（仅 #annot） */
+.anno { display: none; }
+body.annot .anno { display: block; }
+.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+.note { display: none; }
+body.pre .note.prenote, body.center .note.centernote { display: block; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <div class="stage">
+    <div class="qblock">
+      <div class="kicker"><div class="sq"></div><span>今日金句</span></div>
+      <!-- 金句全文（定稿 §六"今日金句"）：编辑性断行成两行，不断词 -->
+      <div class="quote">“The harness outlives<br>every model on it.”</div>
+      <div class="src">—— Fazm Blog</div>
+      <div class="interp">模型会不断更新迭代，围绕模型的工程框架（<span class="m">harness</span>）才是长期价值</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>今日金句 · Fazm Blog</span>
+  </div>
+
+  <!-- 标注层：坐标按实测行盒（measure_金句帧.json：kicker 247–277／金句 299–493／出处 507–539／解读 571–612；块 x374–1546，中心 x960） -->
+  <div class="anno txt" style="left:100px; top:660px;">① 金句全文＝定稿原句（未改写）· 两行编辑性断行 · h1 字阶 88px/700·字距3·行高1.1 · JetBrains Mono NF（实测行宽 1172／1060＜安全宽 1744）</div>
+  <div class="anno txt" style="left:100px; top:684px;">② 出处"—— Fazm Blog"＝metadata 26px 次级（任务书必要上屏项；实测 187px）</div>
+  <div class="anno txt" style="left:100px; top:708px;">③ 解读行＝subtitle 30px primary，实测 920px（定稿解读压缩，剧本 D09 行 3）</div>
+  <div class="anno txt" style="left:100px; top:732px;">④ kicker"今日金句"＝DESIGN 已确认组件（18px 橙方块＋30px 次级·字距4）</div>
+  <div class="anno txt" style="left:100px; top:756px;">⑤ 间距取 spacing 阶梯 lg32／md22／sm14，未套用标题块内部比例（DESIGN：标题块局部比例不外推）</div>
+  <div class="anno txt" style="left:100px; top:780px;">⑥ 停稳阅读候选 108f（3.6s；基准 84f，R6 待配音与用户核）· F0 待配音（R5）· 块中心 x960＝水平居中，块 y247–612 偏上</div>
+
+  <!-- 单帧说明（仅 #pre 可见） -->
+  <div class="txt note prenote" style="left:100px; top:660px;">解读入场前中间态（局部 294–320f）：金句与出处已落稳，解读行未出现（随配音"解读"词点进入）</div>
+  <!-- 单帧说明（仅 #center 可见） -->
+  <div class="txt note centernote" style="left:100px; top:150px;">候选·未确认：金句块文字居中（剧本"居中偏上"字面读法）；默认采用文字左对齐（DESIGN）</div>
+</div>
+<script>
+if (location.hash === '#annot') document.body.classList.add('annot');
+if (location.hash === '#pre') document.body.classList.add('pre');
+if (location.hash === '#center') document.body.classList.add('center');
+if (location.hash === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const tw = (el) => ({t: el.textContent, w: Math.round(el.getBoundingClientRect().width),
+    overflow: el.scrollWidth > el.clientWidth + 1});
+  // 真实文字宽：克隆到 body 并复制被测元素的计算字体（font:inherit 会误用父级字体，量出来偏小）
+  const realW = (el) => {
+    const cs = getComputedStyle(el);
+    const s = document.createElement('span');
+    s.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;top:0;white-space:nowrap;';
+    s.style.fontFamily = cs.fontFamily;
+    s.style.fontSize = cs.fontSize;
+    s.style.fontWeight = cs.fontWeight;
+    s.style.fontStyle = cs.fontStyle;
+    s.style.letterSpacing = cs.letterSpacing;
+    s.innerHTML = el.innerHTML;
+    document.body.appendChild(s);
+    const w = Math.round(s.getBoundingClientRect().width);
+    s.remove();
+    return w;
+  };
+  const q = document.querySelector('.quote');
+  const lines = q.innerHTML.split('<br>').map((html, i) => {
+    const cs = getComputedStyle(q);
+    const span = document.createElement('span');
+    span.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;top:0;white-space:nowrap;';
+    span.style.fontFamily = cs.fontFamily;
+    span.style.fontSize = cs.fontSize;
+    span.style.fontWeight = cs.fontWeight;
+    span.style.letterSpacing = cs.letterSpacing;
+    span.innerHTML = html;
+    document.body.appendChild(span);
+    const w = Math.round(span.getBoundingClientRect().width);
+    span.remove();
+    return {i, text: html.replace(/“|”/g, ''), w, withinSafeWidth: w <= 1744};
+  });
+  const out = {
+    docScroll: {w: document.documentElement.scrollWidth, h: document.documentElement.scrollHeight},
+    top: r(document.querySelector('.top')),
+    stage: r(document.querySelector('.stage')),
+    qblock: r(document.querySelector('.qblock')),
+    kicker: r(document.querySelector('.kicker')),
+    quote: r(q),
+    quoteLines: lines,
+    src: {t: document.querySelector('.src').textContent, textW: realW(document.querySelector('.src'))},
+    interp: {t: document.querySelector('.interp').textContent, textW: realW(document.querySelector('.interp'))},
+    blockCenterX: Math.round(r(document.querySelector('.qblock')).x + r(document.querySelector('.qblock')).w / 2),
+    foot: r(document.querySelector('.foot')),
+    footTexts: [...document.querySelectorAll('.foot span')].map((e) => ({t: e.textContent, textW: realW(e)})),
+    safeArea: {top: 60, left: 88, right: 1832, bottom: 1036}
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.style.display = 'none';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

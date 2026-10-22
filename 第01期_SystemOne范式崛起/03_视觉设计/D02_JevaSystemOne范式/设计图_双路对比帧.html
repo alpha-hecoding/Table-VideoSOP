@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D02 Jeva System One 范式 · 设计图（双路对比帧）</title>
+<style>
+/* 参数来源：DESIGN.md front matter（revision 1.0.0）＋候选A 标题块版式＋动态测试01 双路对比构图与校准参数（只读参考，不复用其文案与时基） */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --panel: #FFFFFF;
+  --panel-blue: #DEE5EC;
+  --panel-orange: #FCE8D4;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; position: relative; }
+/* 系列顶栏（与 D01 一致） */
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 标题块＝论文身份卡（与论文身份帧一致，共享元素连续演化） */
+.kicker { display: flex; align-items: center; gap: 14px; margin-top: 28px; height: 30px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; line-height: 1; }
+h1 { font-size: 88px; font-weight: 700; color: var(--ink); letter-spacing: 3px; margin-top: 10px; line-height: 1.1; height: 97px; }
+.underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+.sub { margin-top: 16px; display: flex; align-items: center; gap: 14px; min-height: 49px; }
+.sub .who { font-size: 30px; color: var(--ink-soft); line-height: 1.25; margin-right: 12px; }
+/* 双路对比面板（测试01 构图：主方白卡＋3px line 边／对照方 system 底无边框；padding 26/34） */
+.panels { display: flex; gap: 40px; margin-top: 32px; height: 398px; }
+.panel { flex: 1; border-radius: 16px; padding: 26px 34px; }
+.panel.L { background: var(--panel); border: 3px solid var(--line); }
+.panel.R { background: var(--panel-blue); }
+.phead { display: flex; align-items: baseline; gap: 16px; height: 48px; }
+.phead h2 { font-size: 42px; font-weight: 700; color: var(--ink); }
+.phead .sys { font-family: var(--font-mono); font-size: 28px; color: var(--ink-soft); }
+.pcap { font-size: 24px; color: var(--ink-soft); margin-top: 4px; line-height: 1.25; }
+svg.p { display: block; margin-top: 16px; width: 100%; height: 120px; }
+.pfoot { display: flex; align-items: center; gap: 14px; margin-top: 12px; min-height: 50px; }
+/* 结果标签（DESIGN result-label：tertiary 底、画布色字、24px、字距2、r10、padding 5/18） */
+.rlabel { background: var(--accent); color: var(--bg); font-size: 24px; font-weight: 700; padding: 5px 18px; border-radius: 10px; letter-spacing: 2px; }
+/* 芯片（DESIGN chip） */
+.chip { display: inline-flex; align-items: center; font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink); background: var(--panel); line-height: 1.25; }
+/* 页脚（承接 D01） */
+.foot { position: absolute; left: 88px; right: 88px; bottom: 44px; border-top: 2px solid var(--line); padding-top: 12px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.3; }
+#measure { display: none; }
+.anno { display: none; }
+body.annot .anno { display: block; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #1B5E9E; white-space: nowrap; }
+body.annot .anno.dim { color: #C2185B; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <div class="kicker"><div class="sq"></div><span>一、前沿模型动态</span></div>
+  <h1>Jeva: System One Models</h1>
+  <div class="underline"></div>
+  <div class="sub">
+    <span class="who">新加坡国立大学</span>
+    <span class="chip">System One 范式</span>
+    <span class="chip hot" style="border: 2px solid var(--accent); background: var(--panel-orange); color: var(--accent); font-weight: 700;">266 票 · 今日第一</span>
+  </div>
+
+  <!-- 双路对比：状态＝左点已接触（答案盒 success 换态＋JEVA 标签），右点行进中（候选位置 t≈0.5） -->
+  <div class="panels">
+    <!-- 左：System 1（主方，焦点方，tertiary 只服务本面板） -->
+    <div class="panel L">
+      <div class="phead"><h2>快速直觉</h2><span class="sys">System 1</span></div>
+      <div class="pcap">一眼看穿的即时推理</div>
+      <svg class="p" viewBox="0 0 880 150" preserveAspectRatio="xMinYMid meet">
+        <rect x="20" y="45" width="180" height="60" rx="12" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="110" y="84" font-size="30" text-anchor="middle" fill="#3E4A5A" font-family="Noto Sans CJK SC, sans-serif">感知</text>
+        <!-- 实线 7px tertiary（快/采用路线），路径已先于对象完成 -->
+        <line x1="210" y1="75" x2="600" y2="75" stroke="#F26B1D" stroke-width="7"/>
+        <polygon points="600,75 570,58 570,92" fill="#F26B1D"/>
+        <!-- 答案盒：success 换态（success 填充＋4px tertiary 边，"答案" tertiary/700）——接触同帧离散换态后状态 -->
+        <rect x="620" y="45" width="200" height="60" rx="12" fill="#FCE8D4" stroke="#F26B1D" stroke-width="4"/>
+        <text x="720" y="84" font-size="30" text-anchor="middle" fill="#F26B1D" font-weight="700" font-family="Noto Sans CJK SC, sans-serif">答案</text>
+        <!-- 左点接触后已淡出，本帧不出现 -->
+      </svg>
+      <div class="pfoot">
+        <!-- JEVA 结果标签：左点接触后 6f 进入（不在完成前出现） -->
+        <span class="rlabel">JEVA</span>
+        <!-- 芯片：JEVA 槽位预留，芯片不位移 -->
+        <span class="chip">第一性原理 · 新型注意力</span>
+      </div>
+    </div>
+    <!-- 右：System 2（对照方，只用 primary/system，不抢焦点） -->
+    <div class="panel R">
+      <div class="phead"><h2>慢速 CoT</h2><span class="sys">System 2</span></div>
+      <div class="pcap">传统 CoT 慢思考路径</div>
+      <svg class="p" viewBox="0 0 880 150" preserveAspectRatio="xMinYMid meet">
+        <rect x="20" y="45" width="150" height="60" rx="12" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="95" y="84" font-size="28" text-anchor="middle" fill="#3E4A5A" font-family="Noto Sans CJK SC, sans-serif">感知</text>
+        <!-- 虚线 6px primary（16/12，慢/对照路线），路径已先于对象完成 -->
+        <path d="M180 75 H300 V30 H420 V110 H540 V75 H660" fill="none" stroke="#3E4A5A" stroke-width="6" stroke-dasharray="16 12"/>
+        <polygon points="690,75 660,58 660,92" fill="#3E4A5A"/>
+        <!-- 答案盒：白框（对照方不换 success 态） -->
+        <rect x="700" y="45" width="160" height="60" rx="12" fill="#fff" stroke="#AEBAC7" stroke-width="3"/>
+        <text x="780" y="84" font-size="28" text-anchor="middle" fill="#3E4A5A" font-family="Noto Sans CJK SC, sans-serif">答案</text>
+        <!-- 右点行进中：候选位置 t≈0.5（弧长 640 的 0.5 处，折线中部） -->
+        <circle cx="420" cy="65" r="10" fill="#3E4A5A"/>
+      </svg>
+      <div class="pfoot"><!-- 右路未完成："多步推导 · 更慢"（capR2）完成后才出现，本帧不出现 --></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>来源：arXiv · HuggingFace</span>
+  </div>
+
+  <!-- 标注层 -->
+  <div class="anno" style="left:88px; top:12px;">安全区：上60 / 左右88 / 下44（1920×1080）</div>
+  <div class="anno" style="left:88px; top:60px; border-top:1px dashed #1B5E9E; width:1744px;"></div>
+  <div class="anno dim" style="left:1260px; top:150px;">标题块＝论文身份帧（共享元素，连续演化；内容不变）</div>
+  <div class="anno dim" style="left:88px; top:375px;">双路对比面板：主方白卡＋3px line 边（沿用测试01 样本；DESIGN panel 组件未定义边框，差异已报总控）／对照方 system 底无边框｜进入 0.98→1＋淡入 18f，错峰 8f</div>
+  <div class="anno dim" style="left:88px; top:716px;">面板头 42px/700＋System 1/2 mono 28px（移除测试01 的"?"占位，本段候选决定）｜说明行 24px 次级</div>
+  <div class="anno dim" style="left:88px; top:744px;">答案盒：左＝success 填充＋4px tertiary 边（"答案" tertiary/700），接触同帧离散换态后状态｜右＝白框，不换 success 态</div>
+  <div class="anno dim" style="left:88px; top:772px;">路径：实线 7px tertiary（左·直线）／虚线 6px primary·16/12（右·折线）｜画面时间差是展示节奏（R1），3-5× 只出现在数据卡</div>
+  <div class="anno dim" style="left:88px; top:812px;">JEVA 结果标签：24px·字距2·r10·padding 5/18，接触后 6f（不在完成前）｜[第一性原理 · 新型注意力] 芯片（JEVA 槽位预留，芯片不位移）｜右点行进中（候选位置 t≈0.5）</div>
+  <div class="anno" style="left:88px; top:840px;">↓ 本区：数据卡组自此进入（35B / 3-5× / 266 票，见 设计图_数据卡组）｜右路未完成→"多步推导 · 更慢"暂不出现</div>
+  <div class="anno dim" style="left:88px; top:958px;">页脚：承接 D01 保留，不重绘</div>
+</div>
+
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const out = {
+    h1: r(document.querySelector('h1')),
+    sub: r(document.querySelector('.sub')),
+    panels: r(document.querySelector('.panels')),
+    panelL: r(document.querySelector('.panel.L')),
+    panelR: r(document.querySelector('.panel.R')),
+    pfootL: r(document.querySelector('.panel.L .pfoot')),
+    svgL: r(document.querySelector('.panel.L svg')),
+    rlabel: r(document.querySelector('.rlabel')),
+    chipL: r(document.querySelector('.panel.L .chip')),
+    foot: r(document.querySelector('.foot'))
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

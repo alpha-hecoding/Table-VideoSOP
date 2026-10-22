@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D06 开源生态速览 · 内容帧（候选A：8 格一次上屏 4×2 终态，格 1 星标强调态）</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）；内容帧结构沿用候选A/动态测试01（D04/D05/D07/D08 同构）
+   版式：候选A＝4 列 × 2 行，8 格一次上屏（重点审查 R3 的两版候选之一；另一版＝4+4 拆两帧，见 设计图_4加4拆两帧.html）
+   每格＝项目名＋1 关键数据（下载量）＋1 行亮点（任务书密度上限）；格 1（MiniCPM-V 4.7，原稿带 ⭐）用强调态＋星标标记 */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --success: #FCE8D4;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 轻量章节行：复用 D05 已确认版式（2026-10-16 用户确认，D06–D08 共用），本段实例＝"三、开源生态"（无标签） */
+.chap { margin-top: 18px; }
+.chap .line { font-size: 30px; line-height: 1.25; }
+.chap .line .no, .chap .line .name { font-weight: 700; color: var(--ink); }
+.chap .underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+/* 8 格网格：4 列 × 2 行，列宽 418＝(1744−3×24)/4，行高 372＝(768−24)/2，行/列间距 24（同 D05/D08 卡组）
+   卡片参数＝候选A 已确认值不改（白 surface、3px line 边、r16、padding 18/28）
+   格内三行＝项目名（mono 26/700，同 D05 名称字阶）＋下载量（data-value 46/700 mono＋label 24 "下载"）＋亮点（CJK 26/400）
+   下载量用 data-value 是为 R3 可读性：8 格密度下把"1 关键数据"抬到最大字阶，名称与亮点退到 26 */
+.grid { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr 1fr; gap: 24px; margin-top: 20px; }
+.kcard { position: relative; background: #fff; border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; display: flex; flex-direction: column; justify-content: center; }
+.kcard .name { font-family: var(--font-mono); font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.kcard .data { margin-top: 12px; display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+.kcard .data .dl { font-size: 24px; font-weight: 400; color: var(--ink-soft); line-height: 1.25; }
+.kcard .data .num { font-family: var(--font-mono); font-size: 46px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+.kcard .point { margin-top: 12px; font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+/* 星标强调态（格 1）：3px 边 line→tertiary、底 surface→success（剧本 D06 行 1"强调态"；同测试01 离散换态语言）
+   星标＝原稿标题里的 ⭐，用 ★ 角标（格内右上，tertiary）；不放进名称行，避免名称行溢出（名称实测已接近内宽） */
+.kcard.hot { border-color: var(--accent); background: var(--success); }
+.kcard .star { position: absolute; right: 20px; top: 14px; font-size: 26px; line-height: 1.25; color: var(--accent); }
+/* #row1＝"初始：第一行 4 格"中间态（第二行 4 格未入场；visibility 保留格盒尺寸 → 布局与终态逐像素同位） */
+body.row1 .r2 { visibility: hidden; }
+/* #late＝候选·未确认：强调态延后到末格落定后（格 1 入场时仍默认态、星标未出现）；默认采用终态（入场即强调态，剧本行 1） */
+body.late .kcard.hot { border-color: var(--line); background: #fff; }
+body.late .star { visibility: hidden; }
+/* 页脚（与 D04/D05/D07/D08 内容帧一致） */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* 标注层（仅 #annot） */
+.anno { display: none; }
+body.annot .anno { display: block; }
+.anno.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+/* 单帧说明：只在对应模式出现，不进 #annot 标注版（避免中间态／候选被误当成终态） */
+.note { display: none; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+body.row1 .note.r1note, body.late .note.latnote { display: block; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <!-- 轻量章节行：与第 1 格同拍进入（剧本 D06 行 1）；版式复用 D05 已确认样例，仅换章号/名称 -->
+  <div class="chap">
+    <div class="line"><span class="no">三、</span><span class="name">开源生态</span></div>
+    <div class="underline"></div>
+  </div>
+
+  <!-- 8 格 4×2：内容取定稿 3.1–3.8；每格＝项目名（去 org 前缀，8 格统一）＋下载量＋1 行亮点 -->
+  <div class="grid">
+    <div class="kcard r1 k1 hot">
+      <div class="star">★</div>
+      <div class="name">MiniCPM-V-4.7-35B-A3B</div>
+      <div class="data"><span class="dl">下载</span><span class="num">4,160+</span></div>
+      <div class="point">MoE 多模态，端侧友好</div>
+    </div>
+    <div class="kcard r1 k2">
+      <div class="name">MiniCPM-V-4.7-1B</div>
+      <div class="data"><span class="dl">下载</span><span class="num">2,540+</span></div>
+      <div class="point">超轻量，手机可跑</div>
+    </div>
+    <div class="kcard r1 k3">
+      <div class="name">Unlimited-OCR</div>
+      <div class="data"><span class="dl">下载</span><span class="num">1.15M+</span></div>
+      <div class="point">百度出品，无限长文档</div>
+    </div>
+    <div class="kcard r1 k4">
+      <div class="name">LTX-2.5</div>
+      <div class="data"><span class="dl">下载</span><span class="num">1.82M+</span></div>
+      <div class="point">图像生成视频，动画流畅</div>
+    </div>
+    <div class="kcard r2 k5">
+      <div class="name">drama-3</div>
+      <div class="data"><span class="dl">下载</span><span class="num">839</span></div>
+      <div class="point">36B 超大规模 TTS</div>
+    </div>
+    <div class="kcard r2 k6">
+      <div class="name">iris-3b</div>
+      <div class="data"><span class="dl">下载</span><span class="num">1,130+</span></div>
+      <div class="point">轻量图像生成，端侧可跑</div>
+    </div>
+    <div class="kcard r2 k7">
+      <div class="name">clef</div>
+      <div class="data"><span class="dl">下载</span><span class="num">18,300+</span></div>
+      <div class="point">Cloudflare 边缘部署优化</div>
+    </div>
+    <div class="kcard r2 k8">
+      <div class="name">embeddinggemma-2</div>
+      <div class="data"><span class="dl">下载</span><span class="num">135,000+</span></div>
+      <div class="point">0.7B Embedding</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>三、开源生态</span>
+  </div>
+
+  <!-- 标注层：①–⑧＝定稿出处＋入场帧（候选）；⑨⑩⑪＝章节行、密度与焦点纪律、页脚/停稳/F0
+       坐标按实测格盒（见 05_制作工程/分段/D06_开源生态速览/_work/measure_8格网格帧.json） -->
+  <div class="anno txt" style="left:100px; top:228px;">① 定稿 §3.1 · 章节行＋本格同拍入场 6–22f</div>
+  <div class="anno txt" style="left:100px; top:250px;">入场即强调态＋★ 角标（见 ⑪）</div>
+  <div class="anno txt" style="left:542px; top:228px;">② 定稿 §3.2 · 入场 51–67f</div>
+  <div class="anno txt" style="left:984px; top:228px;">③ 定稿 §3.3 · 入场 81–97f</div>
+  <div class="anno txt" style="left:1426px; top:228px;">④ 定稿 §3.4 · 入场 111–127f</div>
+  <div class="anno txt" style="left:100px; top:624px;">⑤ 定稿 §3.5 · 入场 141–157f（第二行起）</div>
+  <div class="anno txt" style="left:542px; top:624px;">⑥ 定稿 §3.6 · 入场 171–187f</div>
+  <div class="anno txt" style="left:984px; top:624px;">⑦ 定稿 §3.7 · 入场 201–217f</div>
+  <div class="anno txt" style="left:1426px; top:624px;">⑧ 定稿 §3.8 · 入场 231–247f</div>
+  <div class="anno txt" style="left:560px; top:143px;">⑨ 章节行复用 D05 已确认版式（D06–D08 共用）：仅换章号/名称，本段无标签</div>
+  <div class="anno txt" style="left:560px; top:165px;">⑩ 每格＝名称＋1 数据＋1 行（密度上限）· 下载量用 data-value 46 抬可读性（R3）</div>
+  <div class="anno txt" style="left:560px; top:187px;">⑪ 强调态只给格 1（星标项目）· 其余 7 格等重、格内无 tertiary · 页脚 251–267f · 停稳 84f（267–351f）· F0 待配音 (R5)</div>
+
+  <!-- 单帧说明（仅 #row1 可见） -->
+  <div class="note r1note" style="left:560px; top:143px;">中间态＝剧本"初始：第一行 4 格"（局部 6–127f）：第二行 4 格未入场</div>
+  <div class="note r1note" style="left:560px; top:165px;">格盒位置与终态逐像素同位（visibility 隐藏，不重排）→ 第二行入场不跳版</div>
+  <div class="note r1note" style="left:560px; top:187px;">本页为版面参照：页脚按本帧常显，实际入场在 251–267f（见 ⑪）</div>
+
+  <!-- 单帧说明（仅 #late 可见；放在章节行右侧空白，不压格内内容） -->
+  <div class="note latnote" style="left:560px; top:143px;">候选·未确认：强调态延后——格 1 入场时仍默认态，末格落定后（253f）一次离散换态＋★</div>
+  <div class="note latnote" style="left:560px; top:165px;">默认采用终态＝入场即强调态（剧本 D06 行 1"第 1 格入场（强调态）"）；交用户拍板</div>
+</div>
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#row1') document.body.classList.add('row1');
+if (mode === '#late') document.body.classList.add('late');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const ov = (el) => el.scrollWidth > el.clientWidth + 1;
+  // 实测文字宽（nowrap 块的 scrollWidth 等于可用宽，看不出真实文字宽）
+  // → 克隆该行为隐藏的行内块（保留内部 .dl/.num 等宽子跨度，字体混排才准），量其边界宽
+  const textW = (el) => {
+    const c = el.cloneNode(true);
+    c.style.cssText += ';position:absolute;left:-9999px;top:0;width:auto;display:inline-block;white-space:nowrap;margin:0;';
+    el.parentElement.appendChild(c);
+    const w = Math.round(c.getBoundingClientRect().width);
+    c.remove();
+    return w;
+  };
+  const out = {
+    top: r(document.querySelector('.top')),
+    chap: {
+      line: r(document.querySelector('.chap .line')),
+      lineW: Math.round(document.querySelector('.chap .line').getBoundingClientRect().width),
+      underline: r(document.querySelector('.chap .underline'))
+    },
+    grid: r(document.querySelector('.grid')),
+    gridCols: getComputedStyle(document.querySelector('.grid')).gridTemplateColumns,
+    gridRows: getComputedStyle(document.querySelector('.grid')).gridTemplateRows,
+    cards: [...document.querySelectorAll('.kcard')].map(c => ({
+      name: c.querySelector('.name').textContent,
+      dl: c.querySelector('.dl').textContent,
+      num: c.querySelector('.num').textContent,
+      point: c.querySelector('.point').textContent,
+      star: !!c.querySelector('.star'),
+      hot: c.classList.contains('hot'),
+      innerW: c.querySelector('.name').clientWidth,
+      innerH: c.clientHeight,
+      nameW: textW(c.querySelector('.name')),
+      dataW: textW(c.querySelector('.data')),
+      pointW: textW(c.querySelector('.point')),
+      nameOverflow: ov(c.querySelector('.name')),
+      dataOverflow: ov(c.querySelector('.data')),
+      pointOverflow: ov(c.querySelector('.point')),
+      stackH: Math.round(c.querySelector('.name').getBoundingClientRect().height
+        + c.querySelector('.data').getBoundingClientRect().height
+        + c.querySelector('.point').getBoundingClientRect().height) + 24,
+      box: r(c)
+    })),
+    foot: r(document.querySelector('.foot')),
+    // 安全区自检：上 60 / 左右 88 / 下 44（DESIGN canvas.safeInsets）→ 内容底边须 ≤1036
+    safe: {
+      contentBottomLimit: 1036,
+      footBottom: Math.round(document.querySelector('.foot').getBoundingClientRect().bottom),
+      gridBottom: Math.round(document.querySelector('.grid').getBoundingClientRect().bottom),
+      gridLeft: Math.round(document.querySelector('.grid').getBoundingClientRect().left),
+      gridRight: Math.round(document.querySelector('.grid').getBoundingClientRect().right),
+      frameScrollOverflow: document.querySelector('.frame').scrollHeight > 1080
+    }
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

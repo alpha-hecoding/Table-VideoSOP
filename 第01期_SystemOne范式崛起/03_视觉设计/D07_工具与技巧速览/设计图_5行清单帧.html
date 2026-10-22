@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D07 工具与技巧速览 · 内容帧（单列 5 行清单终态）</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）；内容帧结构沿用候选A/动态测试01（D04/D05 同构）
+   版式：单列 5 行清单（剧本 D07"单列 5 行，每行＝名称＋一行要点"）；第 1 行多一行子芯片（剧本：4 步具体化） */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --success: #FCE8D4;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 轻量章节行：复用 D05 已确认版式（2026-10-16 用户确认，D06–D08 共用），本段实例＝"四、AI 工具与技巧"（无标签） */
+.chap { margin-top: 18px; }
+.chap .line { font-size: 30px; line-height: 1.25; }
+.chap .line .no, .chap .line .name { font-weight: 700; color: var(--ink); }
+.chap .underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+/* 单列 5 行清单：候选A 卡片参数（白 surface、3px line 边、r16、padding 18/28 不改）；行高按含子芯片的第 1 行预留 → 子芯片入场不改变版式
+   行间距取 spacing.sm 14px（5 行＋页脚在安全区内不溢出；padding 属候选A 已确认值，不动） */
+.list { flex: 1; display: grid; grid-template-rows: 1.7fr 1fr 1fr 1fr 1fr; gap: 14px; margin-top: 20px; }
+.row { background: #fff; border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; display: flex; align-items: center; gap: 24px; }
+.row .no { font-family: var(--font-mono); font-size: 26px; font-weight: 700; color: var(--ink-soft); width: 74px; flex: 0 0 auto; line-height: 1.25; }
+.row .body { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.row .name { font-size: 30px; font-weight: 700; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.row .point { margin-top: 10px; font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.m { font-family: var(--font-mono); }
+/* 子芯片（第 1 行）：DESIGN chip 组件＝surface 底＋2px line 边＋r10＋padding 6/18＋body 字阶；默认态，行内无 tertiary（焦点纪律） */
+.chips { margin-top: 14px; display: flex; gap: 14px; }
+.chip { font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); background: #fff; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+/* 页脚（与 D04/D05 内容帧一致） */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* #pre＝子芯片入场瞬间（行 1 高度已预留，版式不跳） */
+body.pre .chips { visibility: hidden; }
+/* #emph＝候选：子芯片切强调态（tertiary 边＋success 底）——未确认，交用户拍板 */
+body.emph .chip { border-color: var(--accent); background: var(--success); }
+/* 标注层（仅 #annot） */
+.anno { display: none; }
+body.annot .anno { display: block; }
+.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+/* 单帧说明条：只在 #pre／#emph 出现，不进 #annot 标注版（避免中间态与候选被误当成终态） */
+.note { display: none; }
+body.pre .note.prenote, body.emph .note.emphnote { display: block; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <!-- 轻量章节行：与第 1 行同拍进入（剧本 D07 行 1）；版式复用 D05 已确认样例，仅换章号/名称 -->
+  <div class="chap">
+    <div class="line"><span class="no">四、</span><span class="name">AI 工具与技巧</span></div>
+    <div class="underline"></div>
+  </div>
+
+  <!-- 单列 5 行清单：内容取定稿 4.1–4.5；每行＝序号＋技巧名＋一行要点；第 1 行多一行 4 步子芯片 -->
+  <div class="list">
+    <div class="row">
+      <div class="no">4.1</div>
+      <div class="body">
+        <div class="name"><span class="m">Claude Code</span> 一致性工作流</div>
+        <div class="point">输出不稳定：同样的 <span class="m">prompt</span> 结果不同</div>
+        <div class="chips">
+          <div class="chip"><span class="m">1</span> <span class="m">Spec</span> 文档</div>
+          <div class="chip"><span class="m">2</span> 版本控制</div>
+          <div class="chip"><span class="m">3</span> 测试驱动</div>
+          <div class="chip"><span class="m">4</span> 上下文管理</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="no">4.2</div>
+      <div class="body">
+        <div class="name">上下文压缩</div>
+        <div class="point"><span class="m">/compact</span> 手动触发 · <span class="m">softThresholdTokens</span> 控制自动阈值</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="no">4.3</div>
+      <div class="body">
+        <div class="name"><span class="m">ANTHROPIC_BASE_URL</span> 配置</div>
+        <div class="point">路由到自定义 API 端点（代理 / 网关）</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="no">4.4</div>
+      <div class="body">
+        <div class="name"><span class="m">GitHub Trending</span> 项目实战</div>
+        <div class="point">复现 <span class="m">Trending</span> 项目 · 学代码结构 · 贡献 PR</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="no">4.5</div>
+      <div class="body">
+        <div class="name"><span class="m">Paper Digest</span> 论文追踪利器</div>
+        <div class="point">每日论文摘要 · 会议高亮（<span class="m">NeurIPS 2026</span> 已上线）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>四、AI 工具与技巧</span>
+  </div>
+
+  <!-- 标注层：①–⑤＝定稿出处＋入场帧（候选）；⑥⑥b＝子芯片节拍；⑦⑧＝版式与焦点纪律；⑨＝页脚/停稳/F0
+       坐标按实测行盒：4.1 215–428／4.2 441–566／4.3 580–705／4.4 719–844／4.5 858–983；子芯片行 344–394（x 217–963） -->
+  <div class="anno txt" style="left:100px; top:226px;">① 定稿 §4.1 · 章节行＋本行同拍入场 6–22f</div>
+  <div class="anno txt" style="left:1150px; top:485px;">② 定稿 §4.2 · 入场 122–138f</div>
+  <div class="anno txt" style="left:1150px; top:624px;">③ 定稿 §4.3 · 入场 167–183f</div>
+  <div class="anno txt" style="left:1150px; top:763px;">④ 定稿 §4.4 · 入场 212–228f</div>
+  <div class="anno txt" style="left:1150px; top:875px;">⑤ 定稿 §4.5 · 入场 257–273f</div>
+  <div class="anno txt" style="left:985px; top:350px;">⑥ 4 步子芯片 28–62f（错峰 6f、各 16f）</div>
+  <div class="anno txt" style="left:985px; top:374px;">⑥b 剧本"逐个带读"：实际按配音逐项词点重排 (R5)</div>
+  <div class="anno txt" style="left:560px; top:143px;">⑦ 章节行复用 D05 已确认版式（D06–D08 共用）：仅换章号/名称，本段无标签</div>
+  <div class="anno txt" style="left:560px; top:165px;">⑧ 5 行版式同构＝序号＋名称（30px/700）＋要点（26px/400）各 1 行；行 1 仅多一行子芯片</div>
+  <div class="anno txt" style="left:1150px; top:915px;">⑨ 页脚 277–293f · 停稳 84f（293–377f）· F0 待配音 (R5)</div>
+
+  <!-- 单帧说明（仅 #pre／#emph 可见） -->
+  <div class="txt note prenote" style="left:217px; top:350px;">子芯片入场瞬间（局部 6–22f）：行 1 高度已按含芯片版式预留 → 入场不改变版式、列表不跳</div>
+  <div class="txt note emphnote" style="left:560px; top:143px;">候选·未确认：4 步子芯片切强调态（tertiary 边＋success 底）</div>
+  <div class="txt note emphnote" style="left:560px; top:165px;">同屏出现 4 个 tertiary 焦点，与 DESIGN 焦点纪律相冲 → 交用户拍板；默认采用终态（子芯片默认态）</div>
+</div>
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#pre') document.body.classList.add('pre');
+if (mode === '#emph') document.body.classList.add('emph');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const ov = (el) => el.scrollWidth > el.clientWidth + 1;
+  const out = {
+    top: r(document.querySelector('.top')),
+    chap: {
+      line: r(document.querySelector('.chap .line')),
+      underline: r(document.querySelector('.chap .underline'))
+    },
+    list: r(document.querySelector('.list')),
+    rows: [...document.querySelectorAll('.row')].map(row => ({
+      no: row.querySelector('.no').textContent,
+      name: row.querySelector('.name').textContent,
+      point: row.querySelector('.point').textContent,
+      nameOverflow: ov(row.querySelector('.name')),
+      pointOverflow: ov(row.querySelector('.point')),
+      nameW: Math.round(row.querySelector('.name').scrollWidth),
+      pointW: Math.round(row.querySelector('.point').scrollWidth),
+      chips: [...row.querySelectorAll('.chip')].map(c => ({
+        text: c.textContent.replace(/\s+/g, ' ').trim(),
+        overflow: ov(c),
+        box: r(c)
+      })),
+      box: r(row)
+    })),
+    chipsRowWidth: Math.round(document.querySelector('.chips').scrollWidth),
+    foot: r(document.querySelector('.foot')),
+    // 安全区自检：上 60 / 左右 88 / 下 44（DESIGN canvas.safeInsets）→ 内容底边须 ≤1036
+    safe: {
+      contentBottomLimit: 1036,
+      footBottom: Math.round(document.querySelector('.foot').getBoundingClientRect().bottom),
+      listBottom: Math.round(document.querySelector('.list').getBoundingClientRect().bottom),
+      frameScrollOverflow: document.querySelector('.frame').scrollHeight > 1080
+    }
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

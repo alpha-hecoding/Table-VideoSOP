@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D03 前沿模型速览 · 设计图（LFM2.5 帧·对比表态）</title>
+<style>
+/* 参数来源：DESIGN.md front matter（revision 1.0.0）＋候选A 标题块版式（沿用 D01/D02 实测值）＋DESIGN 组件（panel/card/chip）；表格数据逐项取自稿件 1.2"对比分析"表（数值可回查） */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --panel: #FFFFFF;
+  --panel-blue: #DEE5EC;
+  --panel-orange: #FCE8D4;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+.kicker { display: flex; align-items: center; gap: 14px; margin-top: 28px; height: 30px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; line-height: 1; }
+h1 { font-size: 88px; font-weight: 700; color: var(--ink); letter-spacing: 3px; margin-top: 10px; line-height: 1.1; height: 97px; }
+.underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+.sub { margin-top: 16px; display: flex; align-items: center; gap: 14px; min-height: 49px; }
+.sub .who { font-size: 30px; color: var(--ink-soft); line-height: 1.25; margin-right: 12px; }
+.chip { display: inline-flex; align-items: center; font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink); background: var(--panel); line-height: 1.25; white-space: nowrap; }
+.chip .num { font-family: var(--font-mono); font-weight: 700; }
+.desc { margin-top: 22px; font-size: 26px; color: var(--ink); line-height: 1.25; }
+.chips { margin-top: 34px; display: flex; gap: 16px; }
+/* 对比表＝静态数据面板（DESIGN panel：主方 surface；对照行 system 底；入场外无运动） */
+.table { margin-top: 32px; background: var(--panel); border: 3px solid var(--line); border-radius: 16px; padding: 20px 28px; }
+.t-head { display: flex; justify-content: space-between; align-items: baseline; height: 36px; }
+.t-head .t { font-size: 28px; font-weight: 700; color: var(--ink); }
+.t-head .s { font-size: 24px; color: var(--ink-soft); }
+.t-cols, .t-row { display: grid; grid-template-columns: 470px 260px 260px 240px 1fr; align-items: center; }
+.t-cols { margin-top: 10px; padding-bottom: 10px; border-bottom: 2px solid var(--line); }
+.t-cols span { font-size: 24px; color: var(--ink-soft); }
+.t-cols span.cc { text-align: center; }
+.t-row { height: 58px; margin-top: 8px; border-radius: 10px; }
+.t-row.cmp { background: var(--panel-blue); }
+.t-row.hot { background: var(--panel-orange); border: 3px solid var(--accent); }
+.c-m { font-size: 26px; font-weight: 700; color: var(--ink); }
+.t-row.hot .c-m { color: var(--accent); }
+.c-d { font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--ink); text-align: center; }
+.t-row.hot .c-d.active { color: var(--accent); }
+.c-mm { text-align: center; }
+/* 多模态：实心圆＝支持（稿件 ✅），空心圆＝不支持（稿件 ❌）——扁平图形化，不引入 emoji */
+.dot { display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); }
+.dot.off { width: 14px; height: 14px; background: transparent; border: 3px solid var(--line); }
+.t-row.hot .dot { background: var(--accent); }
+/* 端侧友好度：5 级评级，填充块数＝稿件 ⭐ 数 */
+.c-stars { display: flex; gap: 6px; justify-content: center; }
+.st { width: 16px; height: 16px; border-radius: 3px; background: var(--ink); }
+.st.off { background: transparent; border: 2px solid var(--line); }
+.t-row.hot .st { background: var(--accent); }
+.t-row.hot .st.off { border-color: var(--accent); }
+.foot { position: absolute; left: 88px; right: 88px; bottom: 44px; border-top: 2px solid var(--line); padding-top: 12px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.3; }
+#measure { display: none; }
+.anno { display: none; }
+body.annot .anno { display: block; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #1B5E9E; white-space: nowrap; }
+body.annot .anno.dim { color: #C2185B; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <div class="kicker"><div class="sq"></div><span>一、前沿模型动态</span></div>
+  <h1>LFM2.5-24B-A2B</h1>
+  <div class="underline"></div>
+  <div class="sub">
+    <span class="who">Liquid AI</span>
+    <span class="chip"><span class="num">24B</span> 总参 · <span class="num">2B</span> 激活 · MoE</span>
+  </div>
+  <div class="desc">端侧大模型新标杆 · 手机/笔记本流畅运行</div>
+  <div class="chips">
+    <span class="chip">液态神经网络</span>
+    <span class="chip">图像/文本多模态输入</span>
+  </div>
+
+  <!-- 四模型对比表（静态数据面板；数据逐项取自稿件 1.2 对比分析表） -->
+  <div class="table">
+    <div class="t-head"><span class="t">端侧大模型对比</span></div>
+    <div class="t-cols"><span>模型</span><span class="cc">总参数</span><span class="cc">激活参数</span><span class="cc">多模态</span><span class="cc">端侧友好度</span></div>
+    <!-- LFM2.5 行＝强调态：tertiary 边＋success 底，"2B"用 tertiary 钉住"24B 只激活 2B"（本段唯一强调态＝高潮焦点） -->
+    <div class="t-row hot">
+      <span class="c-m">LFM2.5-24B-A2B</span>
+      <span class="c-d">24B</span>
+      <span class="c-d active">2B</span>
+      <span class="c-mm"><span class="dot"></span></span>
+      <span class="c-stars"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span>
+    </div>
+    <div class="t-row cmp">
+      <span class="c-m">Qwen3.8-27B</span>
+      <span class="c-d">27B</span>
+      <span class="c-d">27B</span>
+      <span class="c-mm"><span class="dot"></span></span>
+      <span class="c-stars"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st off"></span><span class="st off"></span></span>
+    </div>
+    <div class="t-row cmp">
+      <span class="c-m">MiniCPM-V 4.7-35B</span>
+      <span class="c-d">35B</span>
+      <span class="c-d">3B</span>
+      <span class="c-mm"><span class="dot"></span></span>
+      <span class="c-stars"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span><span class="st off"></span></span>
+    </div>
+    <div class="t-row cmp">
+      <span class="c-m">Phi-4</span>
+      <span class="c-d">14B</span>
+      <span class="c-d">14B</span>
+      <span class="c-mm"><span class="dot off"></span></span>
+      <span class="c-stars"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span><span class="st off"></span></span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>来源：arXiv · HuggingFace</span>
+  </div>
+
+  <!-- 标注层 -->
+  <div class="anno" style="left:88px; top:12px;">安全区：上60 / 左右88 / 下44（1920×1080）</div>
+  <div class="anno" style="left:88px; top:60px; border-top:1px dashed #1B5E9E; width:1744px;"></div>
+  <div class="anno dim" style="left:88px; top:118px;">标题块与 设计图_LFM2.5帧 完全一致（同版式四帧，内容同）：h1 模型名＋副题（来源＋1 数据芯片）＋定位语＋要点芯片行</div>
+  <div class="anno dim" style="left:88px; top:512px;">对比表＝静态数据面板（入场外无运动）：主方 surface 底·3px line 边·r16·padding 20/28；对照行 system 底｜行 1 LFM2.5＝强调态（tertiary 边＋success 底，"2B"tertiary 钉住"24B 只激活 2B"）＝本段唯一强调态·高潮焦点</div>
+  <div class="anno dim" style="left:360px; top:572px;">多模态：实心圆＝支持（稿件✅）空心圆＝不支持（稿件❌）；端侧友好度：5 级评级，填充块数＝稿件⭐数（候选决定，扁平化不引入 emoji）</div>
+  <div class="anno dim" style="left:88px; top:944px;">表高 403px（y538–941，实测）：头行＋列头＋4 行×58（gap8）；入场＝面板语言 18f（0.98→1＋淡入）＋行错峰 8f（见 运动标注.md B1–B7）</div>
+  <div class="anno dim" style="left:88px; top:966px;">数据逐项＝稿件 1.2 对比分析表：LFM2.5 24B/2B/✅/5⭐｜Qwen3.8-27B 27B/27B/✅/3⭐｜MiniCPM-V 4.7-35B 35B/3B/✅/4⭐｜Phi-4 14B/14B/❌/4⭐</div>
+</div>
+
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const out = {
+    h1: r(document.querySelector('h1')),
+    sub: r(document.querySelector('.sub')),
+    desc: r(document.querySelector('.desc')),
+    chips: [...document.querySelectorAll('.chips .chip')].map(c => ({t: c.textContent, w: Math.round(c.getBoundingClientRect().width), overflow: c.scrollWidth > c.clientWidth + 1})),
+    table: r(document.querySelector('.table')),
+    rows: [...document.querySelectorAll('.t-row')].map(row => ({
+      m: row.querySelector('.c-m').textContent,
+      box: r(row),
+      mOverflow: row.querySelector('.c-m').scrollWidth > row.querySelector('.c-m').clientWidth + 1
+    })),
+    foot: r(document.querySelector('.foot'))
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

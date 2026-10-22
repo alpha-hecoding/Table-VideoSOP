@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D05 Agent 架构速览 · 内容帧（4 卡 2×2 终态）</title>
+<style>
+/* 系列 token：DESIGN.md 1.0.0（确认值）；内容帧结构沿用候选A/动态测试01（D04 同构） */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; display: flex; flex-direction: column; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+/* 轻量章节行（D05 首提，D06–D08 共用同一版式，总控登记） */
+.chap { margin-top: 18px; }
+.chap .line { font-size: 30px; line-height: 1.25; }
+.chap .line .no, .chap .line .name { font-weight: 700; color: var(--ink); }
+.chap .line .tag { font-weight: 400; color: var(--ink-soft); margin-left: 8px; }
+.chap .underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+/* 2×2 速览卡组：候选A 卡片参数（白 surface、3px line 边、r16、padding 18/28）；4 卡同版式等重，卡内无 tertiary（焦点纪律） */
+.grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; margin-top: 20px; }
+.kcard { background: #fff; border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; display: flex; flex-direction: column; justify-content: center; }
+.kcard .name { font-family: var(--font-mono); font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+.kcard .pos { margin-top: 14px; font-size: 26px; color: var(--ink); line-height: 1.25; white-space: nowrap; }
+/* 页脚（与 D04 内容帧一致） */
+.foot { margin-top: 14px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+/* 标注层（仅 #annot） */
+.anno { display: none; }
+body.annot .anno { display: block; }
+.anno.txt { position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <!-- 轻量章节行：与第 1 卡同拍进入（剧本 D05 行 1）；版式供 D06–D08 复用（独立版式样例见 章节行_设计图.html） -->
+  <div class="chap">
+    <div class="line"><span class="no">二、</span><span class="name">Agent 架构与范式</span><span class="tag">· 速览</span></div>
+    <div class="underline"></div>
+  </div>
+
+  <!-- 2×2 速览卡组：内容取定稿 2.2–2.5（每卡＝论文名＋1 行定位，密度约束同 D03） -->
+  <div class="grid">
+    <div class="kcard">
+      <div class="name">Self-Evolving Agent Harness</div>
+      <div class="pos">自进化：从执行中学习，自动更新策略</div>
+    </div>
+    <div class="kcard">
+      <div class="name">Harness²</div>
+      <div class="pos">递归编排：Agent 编排其他 Agent</div>
+    </div>
+    <div class="kcard">
+      <div class="name">Pack Light, CarryOn</div>
+      <div class="pos">上下文管理：封装为对象，按需加载动态压缩</div>
+    </div>
+    <div class="kcard">
+      <div class="name">BLADE</div>
+      <div class="pos">故障归因：审计信息使用，精确定位故障源头</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>二、Agent 架构与范式 · 速览</span>
+  </div>
+
+  <!-- 标注层：卡内 ①–④＝定稿出处＋入场帧（候选）；⑤＝页脚/停稳/F0；⑥⑦＝章节行与密度约束 -->
+  <div class="anno txt" style="left:100px; top:228px;">① 定稿 §2.2 · 入场 6–22f（与章节行同拍）</div>
+  <div class="anno txt" style="left:984px; top:228px;">② 定稿 §2.3 · 入场 51–67f</div>
+  <div class="anno txt" style="left:100px; top:624px;">③ 定稿 §2.4 · 入场 96–112f</div>
+  <div class="anno txt" style="left:984px; top:624px;">④ 定稿 §2.5 · 入场 141–157f</div>
+  <div class="anno txt" style="left:1150px; top:947px;">⑤ 页脚 161–177f · 停稳 84f（177–261f）· F0 待配音 (R5)</div>
+  <div class="anno txt" style="left:560px; top:143px;">⑥ 章节行版式 D06–D08 共用：仅换 章号/名称/标签（本段首提 · 总控登记）</div>
+  <div class="anno txt" style="left:560px; top:165px;">⑦ 每卡 ≤ 名称＋1 行（密度约束，与 D03 同）· 卡内无 tertiary（等重无强调态）</div>
+</div>
+<script>
+const mode = location.hash;
+if (mode === '#annot') document.body.classList.add('annot');
+if (mode === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const out = {
+    top: r(document.querySelector('.top')),
+    chap: {
+      line: r(document.querySelector('.chap .line')),
+      lineW: Math.round(document.querySelector('.chap .line').getBoundingClientRect().width),
+      noW: Math.round(document.querySelector('.chap .no').getBoundingClientRect().width),
+      nameW: Math.round(document.querySelector('.chap .name').getBoundingClientRect().width),
+      tagW: Math.round(document.querySelector('.chap .tag').getBoundingClientRect().width),
+      underline: r(document.querySelector('.chap .underline'))
+    },
+    grid: r(document.querySelector('.grid')),
+    cards: [...document.querySelectorAll('.kcard')].map(c => ({
+      name: c.querySelector('.name').textContent,
+      nameW: Math.round(c.querySelector('.name').getBoundingClientRect().width),
+      pos: c.querySelector('.pos').textContent,
+      posW: Math.round(c.querySelector('.pos').getBoundingClientRect().width),
+      nameOverflow: c.querySelector('.name').scrollWidth > c.querySelector('.name').clientWidth + 1,
+      posOverflow: c.querySelector('.pos').scrollWidth > c.querySelector('.pos').clientWidth + 1,
+      box: r(c)
+    })),
+    foot: r(document.querySelector('.foot'))
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>
