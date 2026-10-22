@@ -1,0 +1,22 @@
+{
+  "name": "ai-intel-ep01-main",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI情报 第01期 主工程：总装与渲染。分段组件在 ../分段/D0X/src/，本目录由总控维护",
+  "scripts": {
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "still:D01": "remotion still D01",
+    "render:full": "remotion render Full out/第01期_总装.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.535",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.9.0"
+  }
+}

@@ -1,0 +1,11 @@
+Agent 架构速览
+
+Agent 架构方向还有四篇值得一看。
+
+Self-Evolving Agent Harness：Agent 不只执行任务，还能从执行中学习，自动提取经验、更新自身策略，实现无需人工干预的持续进化——这和只推理行动的 ReAct、策略固定的 Reflexion 不一样。
+
+Google 的 Harness 平方：Agent 可以编排其他 Agent，形成递归结构，支持开放世界任务，类似"元 Agent"，适合复杂项目管理和多 Agent 协作。
+
+Pack Light, CarryOn：解决长程任务的上下文难题——把信息封装成对象，按需加载、动态压缩，保留关键、丢弃冗余。
+
+BLADE：多 Agent 系统出错时，审计每个 Agent 的信息使用，追踪信息流动路径，精确定位故障源头。

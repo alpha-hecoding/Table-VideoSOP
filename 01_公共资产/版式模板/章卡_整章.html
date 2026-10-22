@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D04 章卡「二、Agent 架构与范式」（本期分隔卡首现）</title>
+<style>
+/* 章卡＝分隔卡首现（R6）：版式沿用候选A 标题块字阶，块体垂直居中；参数经用户确认后交总控登记系列资产 */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; line-height: 1.25; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+.block { margin-top: 326px; }
+.kicker { display: flex; align-items: center; gap: 14px; height: 30px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-family: var(--font-mono); font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; line-height: 1; }
+h1 { font-size: 88px; font-weight: 700; color: var(--ink); letter-spacing: 3px; margin-top: 10px; line-height: 1.1; height: 97px; }
+.underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+.sub { margin-top: 16px; font-size: 30px; color: var(--ink-soft); line-height: 1.25; height: 38px; }
+.foot { position: absolute; left: 88px; right: 88px; bottom: 44px; border-top: 2px solid var(--line); padding-top: 8px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.25; }
+.anno { display: none; }
+body.annot .anno { display: block; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <div class="block">
+    <div class="kicker"><div class="sq"></div><span>CHAPTER 02</span></div>
+    <h1>二、Agent 架构与范式</h1>
+    <div class="underline"></div>
+    <div class="sub">Agent 不只是执行，还要在执行后反思结果</div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第 01 期 — System One 范式崛起，Agent 架构迎来反思革命</span>
+    <span>二、Agent 架构与范式</span>
+  </div>
+
+  <div class="anno" style="left:88px; top:119px;">整章卡仅在进入 D04 前出现一次（其余章节用轻量章节行）——大段表 v1 已确认；入场：淡入＋14px 上浮 16f，停稳约 1s（候选）</div>
+  <div class="anno" style="left:1100px; top:455px;">① kicker：30px mono · 字距 4（候选A kicker 已确认局部值）</div>
+  <div class="anno" style="left:1100px; top:489px;">② h1：88px/700 · 字距 3 · 行高 1.1（候选A 确认值）</div>
+  <div class="anno" style="left:1100px; top:523px;">③ 下划线 120×10（候选A 确认值）</div>
+  <div class="anno" style="left:1100px; top:557px;">④ 副题 30px 次级＝定稿核心思想句</div>
+  <div class="anno" style="left:1100px; top:591px;">⑤ 块体垂直居中 · 顶栏/页脚与内容帧一致</div>
+  <div class="anno" style="left:1100px; top:625px;">⑥ 分隔卡首现（R6）：版式参数经用户确认后</div>
+  <div class="anno" style="left:1100px; top:649px;">&nbsp;&nbsp;交总控登记为系列资产</div>
+</div>
+<script>
+if (location.hash === '#annot') document.body.classList.add('annot');
+if (location.hash === '#measure') {
+  const r = (el) => {
+    const b = el.getBoundingClientRect();
+    return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)};
+  };
+  const out = {
+    kicker: r(document.querySelector('.kicker')),
+    h1: r(document.querySelector('h1')),
+    h1TextW: Math.round(document.querySelector('h1').getBoundingClientRect().width),
+    underline: r(document.querySelector('.underline')),
+    sub: r(document.querySelector('.sub')),
+    block: r(document.querySelector('.block')),
+    foot: r(document.querySelector('.foot'))
+  };
+  const pre = document.createElement('pre');
+  pre.id = 'measure';
+  pre.textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+  document.body.appendChild(pre);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+video: 00_系列测试/动态/动态预览_测试01.mp4
+duration_s: 10.000   overview_fps: 4.700   still_rule: >= 0.75s at -55dB
+still_total_s: 6.77   still_percent: 67.7%   intervals: 3
+longest_still: 3.23s at 5.10-8.33
+flagged (>= 2.0s, confirm each has a reading or expressive purpose):
+  5.10-8.33  (3.23s)
+all still intervals:
+  2.40-4.27  (1.87s)
+  5.10-8.33  (3.23s)
+  8.33-10.00  (1.67s)
+overview: /data/work/code/github/alpha-hecoding/Table-VideoSOP/00_系列测试/动态/自检/overview.png
+note: locating aid only. Still spans can be valid reading time; motion share never proves quality.

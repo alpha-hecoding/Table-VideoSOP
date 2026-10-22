@@ -1,0 +1,30 @@
+video: 第01期_SystemOne范式崛起/05_制作工程/renders/D09_整段_v01.mp4
+duration_s: 45.035   overview_fps: 1.044   still_rule: >= 0.75s at -55dB
+still_total_s: 42.17   still_percent: 93.6%   intervals: 13
+longest_still: 7.20s at 37.83-45.03
+flagged (>= 2.0s, confirm each has a reading or expressive purpose):
+  0.00-3.13  (3.13s)
+  3.13-6.30  (3.17s)
+  6.57-9.07  (2.50s)
+  9.60-12.67  (3.07s)
+  12.90-18.07  (5.17s)
+  18.07-21.63  (3.57s)
+  21.63-26.07  (4.43s)
+  29.80-34.87  (5.07s)
+  37.83-45.03  (7.20s)
+all still intervals:
+  0.00-3.13  (3.13s)
+  3.13-6.30  (3.17s)
+  6.57-9.07  (2.50s)
+  9.60-12.67  (3.07s)
+  12.90-18.07  (5.17s)
+  18.07-21.63  (3.57s)
+  21.63-26.07  (4.43s)
+  26.07-27.30  (1.23s)
+  27.57-28.60  (1.03s)
+  28.73-29.50  (0.77s)
+  29.80-34.87  (5.07s)
+  36.00-37.83  (1.83s)
+  37.83-45.03  (7.20s)
+overview: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D09_v01/overview.png
+note: locating aid only. Still spans can be valid reading time; motion share never proves quality.

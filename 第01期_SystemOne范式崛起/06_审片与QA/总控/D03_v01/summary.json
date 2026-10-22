@@ -1,0 +1,12 @@
+{
+  "video": "第01期_SystemOne范式崛起/05_制作工程/renders/D03_整段_v01.mp4",
+  "duration_s": 75.584,
+  "still_total_s": 69.033,
+  "still_percent": 91.3,
+  "longest_still": {"start": 53.200, "end": 67.433, "seconds": 14.233},
+  "flagged": [{"start": 0.000, "end": 4.967, "seconds": 4.967}, {"start": 7.067, "end": 10.400, "seconds": 3.333}, {"start": 10.400, "end": 20.367, "seconds": 9.967}, {"start": 21.467, "end": 23.933, "seconds": 2.466}, {"start": 26.500, "end": 32.833, "seconds": 6.333}, {"start": 35.000, "end": 39.433, "seconds": 4.433}, {"start": 39.433, "end": 44.400, "seconds": 4.967}, {"start": 44.400, "end": 48.900, "seconds": 4.500}, {"start": 49.967, "end": 53.200, "seconds": 3.233}, {"start": 53.200, "end": 67.433, "seconds": 14.233}, {"start": 69.000, "end": 72.033, "seconds": 3.033}, {"start": 72.033, "end": 74.900, "seconds": 2.867}],
+  "stills": [{"start": 0.000, "end": 4.967, "seconds": 4.967}, {"start": 5.200, "end": 7.067, "seconds": 1.867}, {"start": 7.067, "end": 10.400, "seconds": 3.333}, {"start": 10.400, "end": 20.367, "seconds": 9.967}, {"start": 21.467, "end": 23.933, "seconds": 2.466}, {"start": 24.533, "end": 26.367, "seconds": 1.834}, {"start": 26.500, "end": 32.833, "seconds": 6.333}, {"start": 33.567, "end": 34.567, "seconds": 1.000}, {"start": 35.000, "end": 39.433, "seconds": 4.433}, {"start": 39.433, "end": 44.400, "seconds": 4.967}, {"start": 44.400, "end": 48.900, "seconds": 4.500}, {"start": 49.967, "end": 53.200, "seconds": 3.233}, {"start": 53.200, "end": 67.433, "seconds": 14.233}, {"start": 69.000, "end": 72.033, "seconds": 3.033}, {"start": 72.033, "end": 74.900, "seconds": 2.867}],
+  "overview": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D03_v01/overview.png",
+  "strips": [{"range": "20.0-27.0", "fps": 7.000, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D03_v01/strip_01_20.000-27.000.png"}, {"range": "32.5-34.0", "fps": 10.000, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D03_v01/strip_02_32.500-34.000.png"}, {"range": "48.5-50.0", "fps": 10.000, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D03_v01/strip_03_48.500-50.000.png"}, {"range": "67.0-68.5", "fps": 10.000, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D03_v01/strip_04_67.000-68.500.png"}],
+  "still_rule": {"min_s": 0.750, "noise": "-55dB"}
+}

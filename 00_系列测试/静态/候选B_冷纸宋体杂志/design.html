@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>候选B 冷纸宋体杂志</title>
+<style>
+/* ===== 参数（可编辑） ===== */
+:root {
+  --bg: #F4F2ED;          /* 冷调纸白 */
+  --ink: #20252C;         /* 石墨墨字 */
+  --ink-soft: #6E7683;    /* 次要 */
+  --accent: #D9432C;      /* 朱砂红 */
+  --panel: #FFFFFF;
+  --line: #C7CBD1;        /* 细线 */
+  --line-soft: #DEE1E5;
+  --font-display: 'AR PL UMing CN', serif;   /* 宋体展示 */
+  --font-zh: 'WenQuanYi Zen Hei', sans-serif; /* 正文黑体 */
+  --font-mono: 'JetBrainsMono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 64px 96px 48px; display: flex; flex-direction: column; }
+/* 刊头 */
+.masthead { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px solid var(--ink); padding-bottom: 18px; }
+.masthead .issue { font-family: var(--font-display); font-size: 34px; color: var(--accent); }
+.masthead .name { font-family: var(--font-display); font-size: 34px; color: var(--ink); letter-spacing: 10px; }
+.masthead .date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); }
+/* 标题区 */
+.kicker { display: flex; align-items: center; gap: 18px; margin-top: 44px; }
+.kicker .rule { width: 72px; height: 5px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 6px; }
+h1 { font-family: var(--font-display); font-size: 122px; color: var(--ink); letter-spacing: 6px; margin-top: 16px; }
+h1 .en { font-family: var(--font-mono); font-size: 88px; letter-spacing: 0; color: var(--ink); }
+.subtitle { font-family: var(--font-display); font-size: 44px; color: var(--ink-soft); margin-top: 12px; letter-spacing: 3px; }
+.subtitle b { color: var(--accent); font-weight: normal; }
+/* 主体：大数字对比图 */
+.figure { flex: 1; display: flex; align-items: stretch; margin-top: 30px; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); }
+.col { flex: 1; display: flex; align-items: center; gap: 46px; padding: 30px 50px; }
+.col + .col { border-left: 2px solid var(--line); }
+.num { font-family: var(--font-display); font-size: 230px; line-height: 1; }
+.col.s1 .num { color: var(--accent); }
+.col.s2 .num { color: var(--line); }
+.col .txt h2 { font-family: var(--font-display); font-size: 56px; color: var(--ink); letter-spacing: 4px; }
+.col.s2 .txt h2 { color: var(--ink-soft); }
+.col .txt .en { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); margin-top: 4px; }
+.col .txt .desc { font-size: 28px; color: var(--ink-soft); margin-top: 16px; line-height: 1.5; }
+.col .txt .desc b { color: var(--ink); }
+.arrowbox { margin-left: auto; }
+/* 数据条 */
+.stats { display: flex; margin-top: 0; }
+.stat { flex: 1; padding: 26px 40px; border-right: 2px solid var(--line); }
+.stat:last-child { border-right: none; }
+.stat .k { font-size: 24px; color: var(--ink-soft); letter-spacing: 2px; }
+.stat .v { font-family: var(--font-display); font-size: 74px; color: var(--ink); margin-top: 6px; }
+.stat .v em { font-style: normal; color: var(--accent); }
+.stat .n { font-size: 23px; color: var(--ink-soft); }
+/* 页脚 */
+.foot { display: flex; justify-content: space-between; align-items: baseline; border-top: 2px solid var(--ink); margin-top: 30px; padding-top: 16px; }
+.foot .l { font-size: 24px; color: var(--ink-soft); }
+.foot .p { font-family: var(--font-display); font-size: 40px; color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="masthead">
+    <div class="issue">第 01 期</div>
+    <div class="name">AI 情 报</div>
+    <div class="date">2026.10.15</div>
+  </div>
+
+  <div class="kicker"><div class="rule"></div><span>Agent 架构与范式</span></div>
+  <h1><span class="en">System One</span> 范式崛起</h1>
+  <div class="subtitle">Agent 架构迎来<b>反思革命</b>。—— Jeva: System One Models from First Principles · 新加坡国立大学</div>
+
+  <div class="figure">
+    <div class="col s1">
+      <div class="num">1</div>
+      <div class="txt">
+        <h2>快速直觉</h2>
+        <div class="en">System 1 · 即时推理</div>
+        <div class="desc">借鉴认知科学"系统 1"理论，<br><b>Jeva 追求一眼看穿的即时推理</b>，从第一性原理重造架构。</div>
+      </div>
+      <svg class="arrowbox" width="300" height="120" viewBox="0 0 300 120">
+        <line x1="10" y1="60" x2="240" y2="60" stroke="#D9432C" stroke-width="8"/>
+        <polygon points="285,60 245,40 245,80" fill="#D9432C"/>
+        <text x="12" y="30" font-size="24" fill="#6E7683" font-family="WenQuanYi Zen Hei">感知</text>
+        <text x="212" y="30" font-size="24" fill="#D9432C" font-weight="bold" font-family="WenQuanYi Zen Hei">答案</text>
+      </svg>
+    </div>
+    <div class="col s2">
+      <div class="num">2</div>
+      <div class="txt">
+        <h2>慢速反思</h2>
+        <div class="en">System 2 · 传统 CoT</div>
+        <div class="desc">多步链式推导，路径更长；<br>新范式选择<b>先快后想</b>。</div>
+      </div>
+      <svg class="arrowbox" width="300" height="120" viewBox="0 0 300 120">
+        <path d="M10 60 H80 V25 H150 V95 H220 V60 H240" fill="none" stroke="#6E7683" stroke-width="6" stroke-dasharray="14 10"/>
+        <polygon points="285,60 245,40 245,80" fill="#6E7683"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">NeurIPS 2026 收录</div><div class="v"><em>9,000+</em> 篇</div><div class="n">历史新高</div></div>
+    <div class="stat"><div class="k">arXiv cs.AI 新增（10/14）</div><div class="v">852 篇</div><div class="n">持续活跃</div></div>
+    <div class="stat"><div class="k">HuggingFace 今日 Top 1</div><div class="v">Jeva <em>266</em> 票</div><div class="n">范式代表作</div></div>
+  </div>
+
+  <div class="foot">
+    <div class="l">AI 情报 — 2026.10.15 · 来源：arXiv · HuggingFace</div>
+    <div class="p">01</div>
+  </div>
+</div>
+</body>
+</html>

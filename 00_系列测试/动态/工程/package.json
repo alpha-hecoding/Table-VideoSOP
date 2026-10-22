@@ -1,0 +1,20 @@
+{
+  "name": "ai-intel-01-dynamic-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI情报系列动态测试（候选A视觉 + 克制运动）",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render MotionTest"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.5.0"
+  }
+}

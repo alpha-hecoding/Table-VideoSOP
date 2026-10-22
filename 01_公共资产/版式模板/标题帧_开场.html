@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>D01 系列标题帧（开场帧模板）</title>
+<style>
+/* 系列开场帧模板：kicker→h1→下划线→副题 比例只认候选A 确认值（大段表 R4） */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; }
+.frame { width: 1920px; height: 1080px; background: var(--bg); padding: 60px 88px 44px; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+.kicker { display: flex; align-items: center; gap: 14px; margin-top: 28px; height: 30px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; line-height: 1; }
+h1 { font-size: 88px; font-weight: 700; color: var(--ink); letter-spacing: 3px; margin-top: 10px; line-height: 1.1; height: 97px; }
+.underline { width: 120px; height: 10px; background: var(--accent); margin-top: 14px; }
+.sub { margin-top: 16px; font-size: 30px; color: var(--ink-soft); line-height: 1.25; height: 38px; }
+.anno { display: none; }
+body.annot .anno { display: block; position: absolute; font-family: var(--font-mono); font-size: 17px; color: #C2185B; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.01</span></div>
+    <div class="date">2026.10.15 · AI DAILY</div>
+  </div>
+
+  <div class="kicker"><div class="sq"></div><span>Agent 架构与范式</span></div>
+  <h1>System One 范式崛起</h1>
+  <div class="underline"></div>
+  <div class="sub">Agent 架构迎来反思革命</div>
+
+  <div class="anno" style="left:88px; top:12px;">系列开场帧模板：标题块 kicker→h1→下划线→副题（比例只认候选A 确认值，R4）</div>
+  <div class="anno" style="left:88px; top:380px;">各期可变内容：EP 编号、数据日期、kicker（期主题）、h1（期题前半）、副题（期题后半）</div>
+  <div class="anno" style="left:88px; top:412px;">标题块以下区域留给看点芯片行与数据卡组（见 设计图_终帧）；片尾卡复用本标题块版式（D09）</div>
+</div>
+<script>
+if (location.hash === '#annot') document.body.classList.add('annot');
+</script>
+</body>
+</html>

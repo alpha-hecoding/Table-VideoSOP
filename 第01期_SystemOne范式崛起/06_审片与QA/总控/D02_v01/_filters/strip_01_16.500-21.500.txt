@@ -1,0 +1,1 @@
+trim=start=16.500:end=21.500,fps=9.800000,scale=640:360,drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf':text='%{pts\:hms}':x=6:y=6:fontsize=20:fontcolor=white:box=1:boxcolor=black@0.7,tile=5x10:padding=4:color=black

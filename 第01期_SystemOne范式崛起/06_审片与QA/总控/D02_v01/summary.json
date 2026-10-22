@@ -1,0 +1,12 @@
+{
+  "video": "第01期_SystemOne范式崛起/05_制作工程/renders/D02_整段_v01.mp4",
+  "duration_s": 42.752,
+  "still_total_s": 41.419,
+  "still_percent": 96.9,
+  "longest_still": {"start": 25.433, "end": 34.533, "seconds": 9.100},
+  "flagged": [{"start": 0.000, "end": 3.767, "seconds": 3.767}, {"start": 4.167, "end": 6.800, "seconds": 2.633}, {"start": 6.800, "end": 10.033, "seconds": 3.233}, {"start": 12.367, "end": 17.167, "seconds": 4.800}, {"start": 17.167, "end": 19.600, "seconds": 2.433}, {"start": 19.600, "end": 25.433, "seconds": 5.833}, {"start": 25.433, "end": 34.533, "seconds": 9.100}, {"start": 34.533, "end": 36.567, "seconds": 2.034}, {"start": 37.833, "end": 41.933, "seconds": 4.100}],
+  "stills": [{"start": 0.000, "end": 3.767, "seconds": 3.767}, {"start": 4.167, "end": 6.800, "seconds": 2.633}, {"start": 6.800, "end": 10.033, "seconds": 3.233}, {"start": 10.700, "end": 12.367, "seconds": 1.667}, {"start": 12.367, "end": 17.167, "seconds": 4.800}, {"start": 17.167, "end": 19.600, "seconds": 2.433}, {"start": 19.600, "end": 25.433, "seconds": 5.833}, {"start": 25.433, "end": 34.533, "seconds": 9.100}, {"start": 34.533, "end": 36.567, "seconds": 2.034}, {"start": 36.833, "end": 37.833, "seconds": 1.000}, {"start": 37.833, "end": 41.933, "seconds": 4.100}, {"start": 41.933, "end": 42.752, "seconds": 0.819}],
+  "overview": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D02_v01/overview.png",
+  "strips": [{"range": "16.5-21.5", "fps": 9.800, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D02_v01/strip_01_16.500-21.500.png"}, {"range": "34.0-40.5", "fps": 7.538, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D02_v01/strip_02_34.000-40.500.png"}],
+  "still_rule": {"min_s": 0.750, "noise": "-55dB"}
+}

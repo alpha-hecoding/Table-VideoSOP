@@ -1,0 +1,31 @@
+video: 第01期_SystemOne范式崛起/05_制作工程/renders/D02_整段_v01.mp4
+duration_s: 42.752   overview_fps: 1.099   still_rule: >= 0.75s at -55dB
+still_total_s: 41.42   still_percent: 96.9%   intervals: 12
+longest_still: 9.10s at 25.43-34.53
+flagged (>= 2.0s, confirm each has a reading or expressive purpose):
+  0.00-3.77  (3.77s)
+  4.17-6.80  (2.63s)
+  6.80-10.03  (3.23s)
+  12.37-17.17  (4.80s)
+  17.17-19.60  (2.43s)
+  19.60-25.43  (5.83s)
+  25.43-34.53  (9.10s)
+  34.53-36.57  (2.03s)
+  37.83-41.93  (4.10s)
+all still intervals:
+  0.00-3.77  (3.77s)
+  4.17-6.80  (2.63s)
+  6.80-10.03  (3.23s)
+  10.70-12.37  (1.67s)
+  12.37-17.17  (4.80s)
+  17.17-19.60  (2.43s)
+  19.60-25.43  (5.83s)
+  25.43-34.53  (9.10s)
+  34.53-36.57  (2.03s)
+  36.83-37.83  (1.00s)
+  37.83-41.93  (4.10s)
+  41.93-42.75  (0.82s)
+overview: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D02_v01/overview.png
+strip 16.5-21.5 @9.800fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D02_v01/strip_01_16.500-21.500.png
+strip 34.0-40.5 @7.538fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D02_v01/strip_02_34.000-40.500.png
+note: locating aid only. Still spans can be valid reading time; motion share never proves quality.

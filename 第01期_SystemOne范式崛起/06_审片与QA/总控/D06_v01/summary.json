@@ -1,0 +1,12 @@
+{
+  "video": "第01期_SystemOne范式崛起/05_制作工程/renders/D06_整段_v01.mp4",
+  "duration_s": 55.339,
+  "still_total_s": 54.071,
+  "still_percent": 97.7,
+  "longest_still": {"start": 15.733, "end": 23.767, "seconds": 8.034},
+  "flagged": [{"start": 0.000, "end": 2.100, "seconds": 2.100}, {"start": 2.100, "end": 4.633, "seconds": 2.533}, {"start": 4.933, "end": 12.700, "seconds": 7.767}, {"start": 12.700, "end": 15.533, "seconds": 2.833}, {"start": 15.733, "end": 23.767, "seconds": 8.034}, {"start": 23.767, "end": 30.800, "seconds": 7.033}, {"start": 31.167, "end": 37.233, "seconds": 6.066}, {"start": 37.233, "end": 42.433, "seconds": 5.200}, {"start": 42.667, "end": 46.800, "seconds": 4.133}, {"start": 46.967, "end": 54.533, "seconds": 7.566}],
+  "stills": [{"start": 0.000, "end": 2.100, "seconds": 2.100}, {"start": 2.100, "end": 4.633, "seconds": 2.533}, {"start": 4.933, "end": 12.700, "seconds": 7.767}, {"start": 12.700, "end": 15.533, "seconds": 2.833}, {"start": 15.733, "end": 23.767, "seconds": 8.034}, {"start": 23.767, "end": 30.800, "seconds": 7.033}, {"start": 31.167, "end": 37.233, "seconds": 6.066}, {"start": 37.233, "end": 42.433, "seconds": 5.200}, {"start": 42.667, "end": 46.800, "seconds": 4.133}, {"start": 46.967, "end": 54.533, "seconds": 7.566}, {"start": 54.533, "end": 55.339, "seconds": 0.806}],
+  "overview": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D06_v01/overview.png",
+  "strips": [],
+  "still_rule": {"min_s": 0.750, "noise": "-55dB"}
+}

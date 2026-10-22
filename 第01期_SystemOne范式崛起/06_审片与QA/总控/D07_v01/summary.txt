@@ -1,0 +1,25 @@
+video: 第01期_SystemOne范式崛起/05_制作工程/renders/D07_整段_v01.mp4
+duration_s: 47.637   overview_fps: 0.987   still_rule: >= 0.75s at -55dB
+still_total_s: 46.14   still_percent: 96.9%   intervals: 9
+longest_still: 8.23s at 31.37-39.60
+flagged (>= 2.0s, confirm each has a reading or expressive purpose):
+  0.00-2.20  (2.20s)
+  2.20-5.07  (2.87s)
+  5.33-8.23  (2.90s)
+  8.23-15.57  (7.33s)
+  15.90-22.80  (6.90s)
+  23.13-31.03  (7.90s)
+  31.37-39.60  (8.23s)
+  41.57-47.64  (6.07s)
+all still intervals:
+  0.00-2.20  (2.20s)
+  2.20-5.07  (2.87s)
+  5.33-8.23  (2.90s)
+  8.23-15.57  (7.33s)
+  15.90-22.80  (6.90s)
+  23.13-31.03  (7.90s)
+  31.37-39.60  (8.23s)
+  39.83-41.57  (1.73s)
+  41.57-47.64  (6.07s)
+overview: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第01期_SystemOne范式崛起/06_审片与QA/总控/D07_v01/overview.png
+note: locating aid only. Still spans can be valid reading time; motion share never proves quality.
