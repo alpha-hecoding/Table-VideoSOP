@@ -1,0 +1,27 @@
+video: 第02期_GUIAgent登顶_开源推理模型新标杆/05_制作工程/renders/D02_整段_v01.mp4
+duration_s: 50.347   overview_fps: 0.934   still_rule: >= 0.75s at -55dB
+still_total_s: 45.87   still_percent: 91.1%   intervals: 9
+longest_still: 8.53s at 41.03-49.57
+flagged (>= 2.0s, confirm each has a reading or expressive purpose):
+  1.03-8.10  (7.07s)
+  8.50-11.50  (3.00s)
+  11.50-13.70  (2.20s)
+  13.70-20.27  (6.57s)
+  20.27-26.37  (6.10s)
+  27.73-35.43  (7.70s)
+  38.00-40.73  (2.73s)
+  41.03-49.57  (8.53s)
+all still intervals:
+  1.03-8.10  (7.07s)
+  8.50-11.50  (3.00s)
+  11.50-13.70  (2.20s)
+  13.70-20.27  (6.57s)
+  20.27-26.37  (6.10s)
+  27.73-35.43  (7.70s)
+  36.03-38.00  (1.97s)
+  38.00-40.73  (2.73s)
+  41.03-49.57  (8.53s)
+overview: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D02_v01/overview.png
+strip 8.0-15.0 @7.000fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D02_v01/strip_01_8.000-15.000.png
+strip 35.0-45.0 @4.900fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D02_v01/strip_02_35.000-45.000.png
+note: locating aid only. Still spans can be valid reading time; motion share never proves quality.

@@ -1,0 +1,12 @@
+{
+  "video": "第02期_GUIAgent登顶_开源推理模型新标杆/05_制作工程/renders/D07_整段_v01.mp4",
+  "duration_s": 50.539,
+  "still_total_s": 47.033,
+  "still_percent": 93.1,
+  "longest_still": {"start": 12.967, "end": 22.500, "seconds": 9.533},
+  "flagged": [{"start": 0.367, "end": 2.500, "seconds": 2.133}, {"start": 2.867, "end": 6.800, "seconds": 3.933}, {"start": 7.133, "end": 12.967, "seconds": 5.834}, {"start": 12.967, "end": 22.500, "seconds": 9.533}, {"start": 22.767, "end": 27.133, "seconds": 4.366}, {"start": 27.133, "end": 30.200, "seconds": 3.067}, {"start": 30.200, "end": 32.267, "seconds": 2.067}, {"start": 33.100, "end": 38.833, "seconds": 5.733}, {"start": 38.833, "end": 43.467, "seconds": 4.634}, {"start": 43.767, "end": 46.133, "seconds": 2.366}, {"start": 46.133, "end": 49.500, "seconds": 3.367}],
+  "stills": [{"start": 0.367, "end": 2.500, "seconds": 2.133}, {"start": 2.867, "end": 6.800, "seconds": 3.933}, {"start": 7.133, "end": 12.967, "seconds": 5.834}, {"start": 12.967, "end": 22.500, "seconds": 9.533}, {"start": 22.767, "end": 27.133, "seconds": 4.366}, {"start": 27.133, "end": 30.200, "seconds": 3.067}, {"start": 30.200, "end": 32.267, "seconds": 2.067}, {"start": 33.100, "end": 38.833, "seconds": 5.733}, {"start": 38.833, "end": 43.467, "seconds": 4.634}, {"start": 43.767, "end": 46.133, "seconds": 2.366}, {"start": 46.133, "end": 49.500, "seconds": 3.367}],
+  "overview": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D07_v01/overview.png",
+  "strips": [{"range": "8.0-16.0", "fps": 6.125, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D07_v01/strip_01_8.000-16.000.png"}, {"range": "22.0-30.0", "fps": 6.125, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D07_v01/strip_02_22.000-30.000.png"}, {"range": "34.0-43.0", "fps": 5.444, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D07_v01/strip_03_34.000-43.000.png"}],
+  "still_rule": {"min_s": 0.750, "noise": "-55dB"}
+}

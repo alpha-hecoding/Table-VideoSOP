@@ -1,0 +1,37 @@
+video: 第02期_GUIAgent登顶_开源推理模型新标杆/05_制作工程/renders/D08_整段_v01.mp4
+duration_s: 57.173   overview_fps: 0.822   still_rule: >= 0.75s at -55dB
+still_total_s: 54.23   still_percent: 94.9%   intervals: 15
+longest_still: 6.60s at 15.17-21.77
+flagged (>= 2.0s, confirm each has a reading or expressive purpose):
+  2.20-4.60  (2.40s)
+  4.60-8.13  (3.53s)
+  10.37-15.17  (4.80s)
+  15.17-21.77  (6.60s)
+  22.17-26.63  (4.47s)
+  26.63-32.60  (5.97s)
+  34.50-38.77  (4.27s)
+  40.87-45.40  (4.53s)
+  45.40-48.67  (3.27s)
+  49.00-52.73  (3.73s)
+  52.73-56.13  (3.40s)
+all still intervals:
+  0.37-2.20  (1.83s)
+  2.20-4.60  (2.40s)
+  4.60-8.13  (3.53s)
+  8.43-10.37  (1.93s)
+  10.37-15.17  (4.80s)
+  15.17-21.77  (6.60s)
+  22.17-26.63  (4.47s)
+  26.63-32.60  (5.97s)
+  32.87-34.50  (1.63s)
+  34.50-38.77  (4.27s)
+  38.77-40.63  (1.87s)
+  40.87-45.40  (4.53s)
+  45.40-48.67  (3.27s)
+  49.00-52.73  (3.73s)
+  52.73-56.13  (3.40s)
+overview: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D08_v01/overview.png
+strip 8.0-16.0 @6.125fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D08_v01/strip_01_8.000-16.000.png
+strip 22.0-32.0 @4.900fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D08_v01/strip_02_22.000-32.000.png
+strip 40.0-53.0 @3.769fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D08_v01/strip_03_40.000-53.000.png
+note: locating aid only. Still spans can be valid reading time; motion share never proves quality.

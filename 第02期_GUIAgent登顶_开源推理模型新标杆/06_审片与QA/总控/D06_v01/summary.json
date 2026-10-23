@@ -1,0 +1,12 @@
+{
+  "video": "第02期_GUIAgent登顶_开源推理模型新标杆/05_制作工程/renders/D06_整段_v01.mp4",
+  "duration_s": 54.869,
+  "still_total_s": 51.667,
+  "still_percent": 94.2,
+  "longest_still": {"start": 1.667, "end": 9.900, "seconds": 8.233},
+  "flagged": [{"start": 1.667, "end": 9.900, "seconds": 8.233}, {"start": 10.333, "end": 15.100, "seconds": 4.767}, {"start": 15.100, "end": 22.400, "seconds": 7.300}, {"start": 22.800, "end": 28.500, "seconds": 5.700}, {"start": 28.500, "end": 30.733, "seconds": 2.233}, {"start": 30.733, "end": 34.267, "seconds": 3.534}, {"start": 34.667, "end": 39.433, "seconds": 4.766}, {"start": 39.433, "end": 45.433, "seconds": 6.000}, {"start": 45.833, "end": 50.767, "seconds": 4.934}, {"start": 50.767, "end": 53.700, "seconds": 2.933}],
+  "stills": [{"start": 0.400, "end": 1.667, "seconds": 1.267}, {"start": 1.667, "end": 9.900, "seconds": 8.233}, {"start": 10.333, "end": 15.100, "seconds": 4.767}, {"start": 15.100, "end": 22.400, "seconds": 7.300}, {"start": 22.800, "end": 28.500, "seconds": 5.700}, {"start": 28.500, "end": 30.733, "seconds": 2.233}, {"start": 30.733, "end": 34.267, "seconds": 3.534}, {"start": 34.667, "end": 39.433, "seconds": 4.766}, {"start": 39.433, "end": 45.433, "seconds": 6.000}, {"start": 45.833, "end": 50.767, "seconds": 4.934}, {"start": 50.767, "end": 53.700, "seconds": 2.933}],
+  "overview": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D06_v01/overview.png",
+  "strips": [{"range": "10.0-18.0", "fps": 6.125, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D06_v01/strip_01_10.000-18.000.png"}, {"range": "22.0-31.0", "fps": 5.444, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D06_v01/strip_02_22.000-31.000.png"}, {"range": "44.0-53.0", "fps": 5.444, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D06_v01/strip_03_44.000-53.000.png"}],
+  "still_rule": {"min_s": 0.750, "noise": "-55dB"}
+}

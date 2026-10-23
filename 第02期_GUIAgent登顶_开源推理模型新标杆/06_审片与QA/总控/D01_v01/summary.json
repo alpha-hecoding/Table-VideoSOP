@@ -1,0 +1,12 @@
+{
+  "video": "第02期_GUIAgent登顶_开源推理模型新标杆/05_制作工程/renders/D01_整段_v01.mp4",
+  "duration_s": 44.267,
+  "still_total_s": 40.967,
+  "still_percent": 92.5,
+  "longest_still": {"start": 16.600, "end": 27.200, "seconds": 10.600},
+  "flagged": [{"start": 1.100, "end": 6.233, "seconds": 5.133}, {"start": 6.233, "end": 16.600, "seconds": 10.367}, {"start": 16.600, "end": 27.200, "seconds": 10.600}, {"start": 27.567, "end": 32.100, "seconds": 4.533}, {"start": 42.167, "end": 44.267, "seconds": 2.100}],
+  "stills": [{"start": 1.100, "end": 6.233, "seconds": 5.133}, {"start": 6.233, "end": 16.600, "seconds": 10.367}, {"start": 16.600, "end": 27.200, "seconds": 10.600}, {"start": 27.567, "end": 32.100, "seconds": 4.533}, {"start": 32.833, "end": 34.667, "seconds": 1.834}, {"start": 34.667, "end": 36.033, "seconds": 1.366}, {"start": 36.333, "end": 38.233, "seconds": 1.900}, {"start": 38.533, "end": 40.067, "seconds": 1.534}, {"start": 40.567, "end": 42.167, "seconds": 1.600}, {"start": 42.167, "end": 44.267, "seconds": 2.100}],
+  "overview": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D01_v01/overview.png",
+  "strips": [{"range": "27.0-35.0", "fps": 6.125, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D01_v01/strip_01_27.000-35.000.png"}, {"range": "37.0-43.0", "fps": 8.167, "file": "/data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D01_v01/strip_02_37.000-43.000.png"}],
+  "still_rule": {"min_s": 0.750, "noise": "-55dB"}
+}

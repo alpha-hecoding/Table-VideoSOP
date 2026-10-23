@@ -1,0 +1,50 @@
+video: 第02期_GUIAgent登顶_开源推理模型新标杆/05_制作工程/renders/D03_整段_v01.mp4
+duration_s: 66.816   overview_fps: 0.703   still_rule: >= 0.75s at -55dB
+still_total_s: 50.75   still_percent: 76.0%   intervals: 22
+longest_still: 4.23s at 48.27-52.50
+flagged (>= 2.0s, confirm each has a reading or expressive purpose):
+  1.10-4.43  (3.33s)
+  6.10-8.33  (2.23s)
+  9.40-12.50  (3.10s)
+  12.73-14.83  (2.10s)
+  16.20-18.53  (2.33s)
+  20.00-22.37  (2.37s)
+  22.53-25.00  (2.47s)
+  25.10-27.70  (2.60s)
+  30.13-34.00  (3.87s)
+  34.37-36.43  (2.07s)
+  37.50-40.83  (3.33s)
+  41.03-43.37  (2.33s)
+  45.80-48.07  (2.27s)
+  48.27-52.50  (4.23s)
+  55.10-57.37  (2.27s)
+  59.03-61.50  (2.47s)
+  63.07-65.43  (2.37s)
+all still intervals:
+  1.10-4.43  (3.33s)
+  4.77-5.70  (0.93s)
+  6.10-8.33  (2.23s)
+  9.40-12.50  (3.10s)
+  12.73-14.83  (2.10s)
+  14.97-16.03  (1.07s)
+  16.20-18.53  (2.33s)
+  20.00-22.37  (2.37s)
+  22.53-25.00  (2.47s)
+  25.10-27.70  (2.60s)
+  30.13-34.00  (3.87s)
+  34.37-36.43  (2.07s)
+  37.50-40.83  (3.33s)
+  41.03-43.37  (2.33s)
+  45.00-45.80  (0.80s)
+  45.80-48.07  (2.27s)
+  48.27-52.50  (4.23s)
+  53.50-54.77  (1.27s)
+  55.10-57.37  (2.27s)
+  59.03-61.50  (2.47s)
+  63.07-65.43  (2.37s)
+  65.87-66.82  (0.95s)
+overview: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D03_v01/overview.png
+strip 12.0-22.0 @4.900fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D03_v01/strip_01_12.000-22.000.png
+strip 28.0-38.0 @4.900fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D03_v01/strip_02_28.000-38.000.png
+strip 57.0-65.0 @6.125fps: /data/work/code/github/alpha-hecoding/Table-VideoSOP/第02期_GUIAgent登顶_开源推理模型新标杆/06_审片与QA/总控/D03_v01/strip_03_57.000-65.000.png
+note: locating aid only. Still spans can be valid reading time; motion share never proves quality.

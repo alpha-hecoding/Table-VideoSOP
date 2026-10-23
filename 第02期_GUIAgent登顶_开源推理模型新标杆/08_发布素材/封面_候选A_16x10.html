@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>第02期 封面 · 候选A（B站 16:10）</title>
+<style>
+/* 封面＝已确认候选A 视觉系统的静态单帧（无角色、程序化绘制）。
+   版式与色值取自 01_公共资产/版式模板/ 与 DESIGN.md。
+   画布由成片的 1920×1080 改为 1920×1200（B站封面推荐比例 16:10），h1 与副题按封面阅读距离放大；
+   放大值只用于封面，不写回 DESIGN。 */
+:root {
+  --bg: #F9F2E0;
+  --ink: #3E4A5A;
+  --ink-soft: #7C8797;
+  --accent: #F26B1D;
+  --panel: #FFFFFF;
+  --panel-orange: #FCE8D4;
+  --line: #AEBAC7;
+  --font-zh: 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', sans-serif;
+  --font-mono: 'JetBrains Mono NF', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-zh); background: #444; }
+.frame { width: 1920px; height: 1200px; background: var(--bg); padding: 72px 96px 56px; position: relative; }
+.top { display: flex; justify-content: space-between; align-items: baseline; height: 55px; }
+.brand { font-size: 44px; font-weight: 700; color: var(--ink); letter-spacing: 2px; line-height: 1.25; }
+.brand .ep { font-family: var(--font-mono); color: var(--accent); font-size: 28px; margin-left: 16px; font-weight: 700; }
+.date { font-family: var(--font-mono); font-size: 26px; color: var(--ink-soft); line-height: 1.25; }
+.left { position: absolute; left: 96px; top: 210px; width: 1080px; }
+.kicker { display: flex; align-items: center; gap: 14px; height: 30px; }
+.kicker .sq { width: 18px; height: 18px; background: var(--accent); }
+.kicker span { font-size: 30px; color: var(--ink-soft); letter-spacing: 4px; line-height: 1; }
+h1 { font-size: 96px; font-weight: 700; color: var(--ink); letter-spacing: 3px; line-height: 1.1; margin-top: 22px; white-space: nowrap; }
+.underline { width: 120px; height: 10px; background: var(--accent); margin-top: 20px; }
+.sub { margin-top: 22px; font-size: 34px; color: var(--ink-soft); line-height: 1.3; }
+.chips { display: flex; gap: 14px; margin-top: 34px; }
+.chips.wide { margin-top: 22px; }
+.chip { display: inline-flex; align-items: center; font-size: 26px; padding: 6px 18px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink); background: var(--panel); line-height: 1.25; white-space: nowrap; }
+.right { position: absolute; right: 96px; top: 310px; width: 620px; display: flex; flex-direction: column; gap: 24px; }
+.card { width: 620px; height: 149px; background: var(--panel); border: 3px solid var(--line); border-radius: 16px; padding: 18px 28px; }
+.card .k { font-size: 23px; color: var(--ink-soft); line-height: 1.25; white-space: nowrap; }
+.card .v { font-family: var(--font-mono); font-size: 46px; font-weight: 700; color: var(--ink); margin-top: 2px; line-height: 1.1; white-space: nowrap; }
+.card .v em { font-style: normal; color: var(--accent); }
+.card .n { font-size: 23px; color: var(--ink-soft); margin-top: 2px; line-height: 1.25; white-space: nowrap; }
+.card.hot { border: 3px solid var(--accent); background: var(--panel-orange); }
+.foot { position: absolute; left: 96px; right: 96px; bottom: 56px; border-top: 2px solid var(--line); padding-top: 12px; font-size: 23px; color: var(--ink-soft); display: flex; justify-content: space-between; line-height: 1.3; }
+#measure { display: none; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">AI 情报<span class="ep">EP.02</span></div>
+    <div class="date">2026.10.22 · AI DAILY</div>
+  </div>
+
+  <div class="left">
+    <div class="kicker"><div class="sq"></div><span>今日焦点 · 全模态聚焦与开源推理</span></div>
+    <h1>GUI Agent 登顶</h1>
+    <div class="underline"></div>
+    <div class="sub">开源推理模型新标杆 · 每日最新技术动态精选</div>
+
+    <div class="chips">
+      <div class="chip">Focused GUI 224 票</div>
+      <div class="chip">DeepSeek 763B MoE</div>
+      <div class="chip">FP8 单卡可跑</div>
+    </div>
+    <div class="chips wide">
+      <div class="chip">MiniMax 成本降 70%</div>
+      <div class="chip">BitMTP 提速 2.3×</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="card hot">
+      <div class="k">HuggingFace · 今日 Top 1</div>
+      <div class="v"><em>224</em> 票 Top 1</div>
+      <div class="n">南洋理工 Focused GUI Agent</div>
+    </div>
+    <div class="card">
+      <div class="k">HuggingFace · 下载榜首</div>
+      <div class="v">42.1K 下载</div>
+      <div class="n">DeepSeek-V4.1-Flash (5天)</div>
+    </div>
+    <div class="card">
+      <div class="k">开源推理部署落地</div>
+      <div class="v">单卡 24G 可跑</div>
+      <div class="n">FP8 量化版 · RTX 4090 实测</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>AI 情报 · 第02期 — GUI Agent 登顶，开源推理模型新标杆</span>
+    <span>来源：arXiv · HuggingFace</span>
+  </div>
+
+  <pre id="measure"></pre>
+</div>
+<script>
+if (location.hash === '#measure') {
+  const box = (el) => { const r = el.getBoundingClientRect(); return {x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height)}; };
+  const h1 = document.querySelector('h1');
+  const sub = document.querySelector('.sub');
+  const out = {
+    canvas: {w: document.querySelector('.frame').offsetWidth, h: document.querySelector('.frame').offsetHeight},
+    h1: Object.assign(box(h1), {scrollW: h1.scrollWidth, overflow: h1.scrollWidth > h1.clientWidth + 1}),
+    sub: Object.assign(box(sub), {scrollW: sub.scrollWidth, overflow: sub.scrollWidth > sub.clientWidth + 1}),
+    chips: Array.from(document.querySelectorAll('.chip')).map((c) => Object.assign({t: c.textContent}, box(c))),
+    chipsRowOverflow: (() => { const rows = Array.from(document.querySelectorAll('.chips')); return rows.map((r) => r.scrollWidth > r.clientWidth + 1); })(),
+    cards: Array.from(document.querySelectorAll('.card')).map((c) => ({
+      k: c.querySelector('.k').textContent,
+      v: c.querySelector('.v').textContent.trim(),
+      n: c.querySelector('.n').textContent,
+      box: box(c),
+      kOver: c.querySelector('.k').scrollWidth > c.querySelector('.k').clientWidth + 1,
+      vOver: c.querySelector('.v').scrollWidth > c.querySelector('.v').clientWidth + 1,
+      nOver: c.querySelector('.n').scrollWidth > c.querySelector('.n').clientWidth + 1
+    })),
+    foot: box(document.querySelector('.foot'))
+  };
+  document.getElementById('measure').textContent = 'MEASURE_JSON' + JSON.stringify(out) + 'END_JSON';
+}
+</script>
+</body>
+</html>
